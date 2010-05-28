@@ -1,0 +1,126 @@
+\documentclass[10pt, onecolumn, oneside, article, letterpaper]{memoir}
+
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{pgf}
+\usepackage{xcolor}
+\usepackage[pagebackref, bookmarks, colorlinks, breaklinks,
+plainpages=false, pdfpagelabels, linktocpage,
+linkcolor = red, citecolor = blue, filecolor = blue, urlcolor = blue]{hyperref}
+
+\usepackage{booktabs}
+\usepackage{listings} % code formatting
+\usepackage[final]{pdfpages}
+\fixpdflayout
+
+%%%% US Letter (thin margin)
+\settrimmedsize{11in}{8.5in}{*}
+\setlength{\trimtop}{0pt}
+\setlength{\trimedge}{\stockwidth}
+\addtolength{\trimedge}{-\paperwidth}
+\settypeblocksize{*}{6.5in}{1.414}
+\setulmargins{75pt}{*}{*}
+\setlrmargins{*}{*}{1.0}
+\setheaderspaces{*}{*}{1.618}
+
+% %%%% A4 (thin margin)
+% \settrimmedsize{297mm}{210mm}{*}
+% \setlength{\trimtop}{0pt}
+% \setlength{\trimedge}{\stockwidth}
+% \addtolength{\trimedge}{-\paperwidth}
+% \settypeblocksize{*}{176mm}{1.414}
+% \setulmargins{75pt}{*}{*}
+% \setlrmargins{*}{*}{1.0}
+% \setheaderspaces{*}{*}{1.618}
+
+\checkandfixthelayout
+
+\abstractintoc
+%\abstractname{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%% Glossary Support %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% pdflatex Manual ; makeglossaries Manual ; pdflatex Manual
+\usepackage{glossaries}
+\makeglossaries
+\input{glossary.tex}
+% To use glossary terms:
+% \gls{label} for singular
+% \glspl{label} for plural
+% \Gls{label} for capitalized
+% \Glspl{label} for capitalized plural
+% \glsentrytext{label} for unsafe (link-free) use
+% \glsentryplural{label} for the plural version
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%% BEGIN DOCUMENT %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\includeonly{op_high_voltage}
+\title{Operating Manual for VPT Experiments}
+\author{John Christopher Jones}
+\date{Summer 2010}
+\begin{document}
+
+
+
+\frontmatter
+
+\tableofcontents
+\listoffigures
+\listoftables
+
+\mainmatter
+
+\chapter{Introduction}
+\include{intro_convention}
+
+\part{Equipment Tour}
+\include{eq_magnet}
+\include{eq_vpt}
+\include{eq_led}
+\include{eq_high_voltage}
+\include{eq_low_voltage}
+\chapter{National Instruments PXI Crate}
+\include{eq_pxi}
+\include{eq_readynas}
+\include{eq_building}
+
+
+\part{Operations Manual}
+
+\chapter{Software}
+\include{op_software_setup}
+
+\chapter{Hardware}
+\include{op_magnet}
+\include{op_low_voltage}
+\include{op_high_voltage}
+\include{op_vpt}
+
+\chapter{Maintainence}
+\include{op_maintenance}
+
+\chapter{Experiments}
+\include{op_experiments}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%% Appendicies %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\glossarystyle{long3col}
+\printglossaries
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%% Back Matter %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\backmatter
+
+\end{document}
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%% End: 

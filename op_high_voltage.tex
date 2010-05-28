@@ -1,0 +1,41 @@
+
+\section{High Voltage Supply}
+\label{sec:op_high_voltage}
+
+\subsection{Verifying Cable Configuration}
+\label{sec:op_high_voltage:verify_cables}
+
+Inspect the back of the high voltage unit.  The module inserted in the middle, marked ``12 CH POS'' near the bottom in blue, should bear ten cables in channels 0 through 9.  Verify the layout by reading the cable labels and comparing them with Table \ref{tab:high_voltage:group01} (p. \pageref{tab:high_voltage:group01}).
+
+\begin{table}[htbp]\begin{center}
+  \caption{High Voltage Group 01}
+  \label{tab:high_voltage:group01}
+  \begin{tabular}{c@{\quad\quad} l@{\quad} l@{\quad} r@{.}l@{ V\quad} r@{.}l@{ \hbox{\textmu}A\hfill}}
+    \toprule
+    Channel & Cable Label & Channel Name & \multicolumn{2}{c}{Votlage} & \multicolumn{2}{c}{Current} \\
+    \midrule
+    0 & HV Anode 1  & VPT1-Anode  & 800&00 & 20&00 \\
+    1 & HV Dynode 1 & VPT1-Dynode & 600&00 & 20&00 \\
+    2 & HV Anode 2  & VPT2-Anode  & 800&00 & 20&00 \\
+    3 & HV Dynode 2 & VPT2-Dynode & 600&00 & 20&00 \\
+    4 & HV Anode 3  & VPT3-Anode  & 800&00 & 20&00 \\
+    5 & HV Dynode 3 & VPT3-Dynode & 600&00 & 20&00 \\
+    6 & HV Anode 4  & VPT4-Anode  & 800&00 & 20&00 \\
+    7 & HV Dynode 4 & VPT4-Dynode & 600&00 & 20&00 \\
+    8 & HV Anode 5  & VPT5-Anode  & 800&00 & 20&00 \\
+    9 & HV Dynode 5 & VPT5-Dynode & 600&00 & 20&00 \\
+    \bottomrule
+  \end{tabular}
+\end{center}\end{table}
+
+
+Inspect the rig inside the superconducting solenoidal magnet.  When viewed from the rear, which faces the exterior door, the high voltage cables enter from the front (opposite) side and are attached to the VPT mounting rig on the left-hand side.  Visually verify that the top five cables facing you are labeled ``HV Anode 1'' through ``HV Anode 5'' from top to bottom.  Verify from the front side that the top five cables facing you on the right-hand side are labeled ``HV Dynode 1'' through ``HV Dynode 5''.
+
+\subsection{Verifying the Voltage Settings}
+\label{sec:op_high_voltage:verify_voltage}
+
+From the front of the rack, examine the color LCD monitor below the high voltage unit.  Verify that the voltage settings correspond to Table \ref{tab:high_voltage:group01} (p. \pageref{tab:high_voltage:group01}).
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "Manual"
+%%% End: 

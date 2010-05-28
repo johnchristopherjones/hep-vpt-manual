@@ -1,0 +1,15 @@
+\section{National Instruments PXI Crate}
+\label{sec:pxi}
+
+The \textit{National Instruments \gls{PXI Crate}} is a programmable experimental test-stand capable of automating many aspects of an experiment.  It can be configured to control the experiment, perform advanced analog and digital signalling, control power supplies, perform \gls{DAQ}, process and export data, and more.
+
+Our crate at HEP is configured with the following modules.
+\begin{description}
+\item[Slot 1: Embedded Controller] A full-featured embedded computer running Windows XP.  This module controls all the other components in the crate.  It hosts an RDP server for remote login.
+\item[Slot 2: \gls{FPGA}] Essentially a reprogrammable integrated circuit, an \gls{FPGA} is capable of the real-time signalling logic which a multi-tasking operating system cannot reliably perform.  It is used for TTL and gate logic here.
+\item[Slot 3: Switch?] [fixme]
+\item[Slot 4: DC Power Supply] A software-controlled DC power supply, not currently in use.
+\item[Slot 5: FlexDMM] A software-controlled Digital Multimeter.
+\item[Slot 6: Digitizer] A high-sampling--speed analog to digital converter, which can be used very similarly to an oscilloscope.
+\item[Slot 7: Multiplexer] [fixme]
+\end{description}
