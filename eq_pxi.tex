@@ -1,15 +1,95 @@
-\section{National Instruments PXI Crate}
-\label{sec:pxi}
+\section{PXI Crate}
+\label{sec:eq_pxi}
 
 The \textit{National Instruments \gls{PXI Crate}} is a programmable experimental test-stand capable of automating many aspects of an experiment.  It can be configured to control the experiment, perform advanced analog and digital signalling, control power supplies, perform \gls{DAQ}, process and export data, and more.
 
-Our crate at HEP is configured with the following modules.
-\begin{description}
-\item[Slot 1: Embedded Controller] A full-featured embedded computer running Windows XP.  This module controls all the other components in the crate.  It hosts an RDP server for remote login.
-\item[Slot 2: \gls{FPGA}] Essentially a reprogrammable integrated circuit, an \gls{FPGA} is capable of the real-time signalling logic which a multi-tasking operating system cannot reliably perform.  It is used for TTL and gate logic here.
-\item[Slot 3: Switch?] [fixme]
-\item[Slot 4: DC Power Supply] A software-controlled DC power supply, not currently in use.
-\item[Slot 5: FlexDMM] A software-controlled Digital Multimeter.
-\item[Slot 6: Digitizer] A high-sampling--speed analog to digital converter, which can be used very similarly to an oscilloscope.
-\item[Slot 7: Multiplexer] [fixme]
-\end{description}
+\subsection{NI PXI-1042 Chasis}
+\label{sec:eq_pxi:chasis}
+
+What we refer to as the ``PXI Crate'' or just ``the crate'' is a \textit{National Instruments} \texttt{NI PXI-1042} series chasis and the \textit{National Instruments}-designed modules it houses.  The chasis itself is a Compact~3U rack-mountable chasis that provides Universal~AC, power overload breaker, air temperature regulation, and removable modular power supply.  In most cases, replacing a faulty component can take seconds.
+
+\begin{figure}[htbp]
+  \centering
+  {\tiny
+    Taken from \textit{National Instruments NI PXI-1042 Series User Manual and Specifications}
+  }
+  \pgfimage[interpolate=true]{figures/ni_pxi_1042_front}
+  \caption{Front View of the PXI-1042 Chasis}
+  \label{fig:eq_pxi:chasis_front}
+\end{figure}
+
+The chasis backplane supplies several busses to each slot.  First, all modules share the 64-bit CompactPCI-compatible PXI bus.  Second, a \textit{Star Trigger Bus} originates from Slot\pxislottwo, and connects to the other six peripheral slots.  Third, a \textit{Local Bus} connects all seven peripheral slots in an daisy chain; the left-local bus signals on Slot 2 are used for Star Trigger, and the right-local bus signals on Slot 8 not routed.  The \textit{Local Bus} is 13-lines wide and can pass anything from high-speed TTL to analog signals up to 42~V.  Forth, the \textit{Trigger Bus} provides eight shared trigger lines to all eight slots.  Finally, the chasis supplies a 10~MHz system reference clock signal (PXI\_CLK10) independently to each peripheral slot.  The clock signal is also available externally via rear-mounted BNC connectors.
+
+\begin{figure}[htbp]\begin{center}
+  {\tiny
+    Taken from \textit{National Instruments NI PXI-1042 Series User Manual and Specifications}
+  }
+  \pgfimage[interpolate=true]{figures/ni_pxi_1042_local_and_star_bus}
+  \caption{PXI Local Bus and Star Trigger Routing}
+  \label{fig:eq_pxi:chasis_bus}
+\end{center}\end{figure}
+
+\subsection{Modules}
+\label{sec:eq_pxi:modules}
+
+The chasis at HEP is configured with the following modules, described in the following sections.
+
+% %% Extraneous table; kept for example purposes (eg, column style) %%%%%%%%%%
+% \begin{table}[htbp]\begin{center}
+%     \caption{PXI Modules}
+%     \label{tab:eq_pxi:modules}
+%
+%     \begin{tabular}{@{} c >{\ttfamily}l l l @{}}
+%       \toprule %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%       Slot & \normalfont Model \# & Description & Configuration Options \\
+%       \midrule %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%       \pxislotone  & PXI-8104 & Embedded Controller & Maximum Memory \FIXME \\
+%       \pxislottwo  & PXI-7851R & FPGA & \FIXME\\
+%       \pxislotn{3} & \FIXME & Switch & Mounted with NITB-2605 patch panel \\
+%       \pxislotn{4} & PXI-4071 & DC Power Supply & \FIXME \\
+%       \pxislotn{5} & PXI-4110 & Flex DMM & \FIXME \\
+%       \pxislotn{6} & PXI-5154 & Digitizer & \FIXME \\
+%       \pxislotn{7} & PXI-2593 & Multiplexer & \FIXME \\
+%       \bottomrule %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \end{tabular}
+% \end{center}\end{table}
+
+
+\newcommand*{\pxilabel}[1]{\hspace\labelsep \normalfont\bfseries #1}
+\begin{labelled}{pxilabel}
+
+  \item[\pxislotone{} \texttt{PXI-8104}\hspace{.25em} Embedded Computer]
+    A full-featured embedded computer running Windows XP (downgraded from Windows Vista Business by default by \gls{NI}).  This module ultimately controls all the other components in the crate.  It hosts an RDP server for remote login.  The maximum amount of RAM has been installed, 2~GiB, as two SO-DIMMs of PC2-5300~1~GiB, 128~MiB$\times$64, CL~5, 1.18~in.~max (\gls{NI} part number 779302-1024.)  Spec-wise, it features a Celeron M 440 (1.86~GHz single-core), a 60~GiB SATA hard drive, and gigabit ethernet.  As it occupies the \gls{System Controller} slot, it is generally referred to as the \textit{system controller} in \gls{NI} literature.  For detailed information see the \href{National Instruments Manuals/NI PXI-8104 User Manual}{PXI-8104 User Manual}.  The internal hard drive is only used for system and experiment software.  All experimental data is stored on the \gls{ReadyNAS}.  
+
+  \item[\pxislottwo{} \texttt{PXI-7851R}\hspace{.25em} \gls{FPGA}]
+    Essentially a reprogrammable integrated circuit, the FPGA controls all the real-time trigger signals.  The module itself has a break-out box connector, and this break-out box houses the connections to devices which receive external trigger signals.  (Namely, the LED pulser boards.)  For operating instructures, such as how to program the FPGA from the embedded computer system controller, see section \ref{sec:op_pxi:fpga} on page \pageref{sec:op_pxi:fpga}.
+
+  \item[\pxislotn{3} \texttt{\FIXME}\hspace{.25em} 24-Channel two-wire Multiplexer]
+    Referred to as ``the switch.''  Featuring a single large external port, the switch connects any of a 24 two-wire channels to the internal busses.  Generally all external instrumentation is received through this peripheral.  The switching mechanism is software controlled.  An \texttt{NI TB-2605} multiplexing terminal block is currently mounted directly on it.\\\noindent
+    \FIXME This is either an \texttt{PXI-2501} or \texttt{PXI-2503} multiplexer.
+
+  \item[\pxislotn{4} \texttt{PXI-4110}\hspace{.25em} DC Power Supply]
+    A software-controlled DC power supply, not currently in use.
+
+  \item[\pxislotn{5} \texttt{PXI-4071}\hspace{.25em} PXI Digital Multimeter]
+    A software-controlled Digital Multimeter.  
+
+  \item[\pxislotn{6} \texttt{PXI-5154}\hspace{.25em} Digitizer/Oscilloscope]
+    A high frequency (2~GS/s) oscilloscope, optimized for automated testing.
+
+  \item[\pxislotn{7} \texttt{PXI-2593}\hspace{.25em} 16-Channel Multiplexer]
+    A 16-channel high frequency switching multiplexer, able to handle frequencies from DC to 500 MHz.\\\noindent
+    \FIXME All signals requiring measurement are routed from this multiplexer to either the DMM or the Oscilloscope.\\\noindent
+    \FIXME Wouldn't it make more sense for this multiplexer to be adjacent to the 24-channel multiplexer so that they could communicate directly over the local bus?
+
+\end{labelled}
+
+
+
+
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "Manual"
+%%% End: 

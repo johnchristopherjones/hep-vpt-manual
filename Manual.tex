@@ -1,18 +1,97 @@
 \documentclass[10pt, onecolumn, oneside, article, letterpaper]{memoir}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Logic %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \foreach loop provided by PGF/tikz
+\usepackage{ifthen}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Characters %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Unicode.Characters %%%%%%%%%%%%%%%%
+\usepackage{ucs}
+\usepackage{fontspec} % provides font selecting commands
+\usepackage{xunicode} % provides unicode character macros
+\usepackage{xltxtra}  % provides some fixes/extras
+
+%%%% Math.Characters %%%%%%%%%%%%%%%%%%%
 \usepackage{amsmath}
 \usepackage{textcomp}
-\usepackage{pgf}
+
+%%%% New.Characters %%%%%%%%%%%%%%%%%%%%
+% Defined because I use Option for Meta in EMACS
+\newcommand{\dashem}{—}
+\newcommand{\dashen}{–}
+% Additional special-use characters defined in Conventions.tex, imported in the body
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Graphics %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{graphics}
+\usepackage{tikz}
+%\usetikzlibrary{trees}
 \usepackage{xcolor}
 \usepackage[pagebackref, bookmarks, colorlinks, breaklinks,
 plainpages=false, pdfpagelabels, linktocpage,
-linkcolor = red, citecolor = blue, filecolor = blue, urlcolor = blue]{hyperref}
+linkcolor = red, citecolor = blue, filecolor = blue, urlcolor = blue
+]{hyperref}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Tables %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{booktabs}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Code %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{listings} % code formatting
+\lstset{% general command to set parameter(s)
+  basicstyle=\ttfamily,
+  % morekeywords={*,...}
+}
+
 \usepackage[final]{pdfpages}
 \fixpdflayout
 
+
+
+
+\newboolean{useDejaVu}
+\setboolean{useDejaVu}{false}
+\ifthenelse{\boolean{useDejaVu}}
+{
+    \setmainfont[Scale=0.86]{DejaVu Serif}
+    \setmonofont[Scale=0.86]{DejaVu Sans Mono}
+    \setsansfont[Scale=0.86]{DejaVu Sans}
+}{
+    % \setmainfont{}
+    \setsansfont[Scale=0.86]{Lucida Grande}  % Used for greater unicode coverage
+    \setmonofont[Scale=0.86]{Anonymous Pro}
+}
+
+\newfontfamily      \dejavuserif
+  [ UprightFont    = DejaVu Serif,
+    BoldFont       = DejaVu Serif Bold,
+    ItalicFont     = DejaVu Serif Italic,
+    BoldItalicFont = DejaVu Serif Bold Italic,]
+  {DejaVu Serif}
+
+\newfontfamily      \dejavusans
+  [ UprightFont    = DejaVu Sans,
+    BoldFont       = DejaVu Sans Bold,
+    ItalicFont     = DejaVu Sans Oblique,
+    BoldItalicFont = DejaVu Sans Bold Oblique,]
+  {DejaVu Sans}
+
+\newfontfamily      \dejavusansmono
+  [ UprightFont    = DejaVu Sans Mono,
+    BoldFont       = DejaVu Sans Mono Bold,
+    ItalicFont     = DejaVu Sans Mono Oblique,
+    BoldItalicFont = DejaVu Sans Mono Bold Oblique,]
+  {DejaVu Sans Mono}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Page Layout %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%% US Letter (thin margin)
 \settrimmedsize{11in}{8.5in}{*}
 \setlength{\trimtop}{0pt}
@@ -38,6 +117,11 @@ linkcolor = red, citecolor = blue, filecolor = blue, urlcolor = blue]{hyperref}
 \abstractintoc
 %\abstractname{}
 
+% Set section numbering up to subsection (default section)
+\setsecnumdepth{subsection}
+% Hanging subsection numbers
+% \setsubsecindent{-3em + -2ex}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%% Glossary Support %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -53,56 +137,70 @@ linkcolor = red, citecolor = blue, filecolor = blue, urlcolor = blue]{hyperref}
 % \glsentrytext{label} for unsafe (link-free) use
 % \glsentryplural{label} for the plural version
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% External Graphics %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pgfrealjobname{Manual} % Part of processing 
+\input{Graphics} % External graphics, gobbled into \newcommands
+% \pxislotone \pxislottwo \pxislotn{#1}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Editting Notes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\FIXME}{{\normalfont\scshape[\small fixme]}}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%% BEGIN DOCUMENT %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\includeonly{op_high_voltage}
 \title{Operating Manual for VPT Experiments}
 \author{John Christopher Jones}
 \date{Summer 2010}
+
+% Completed For Now
+%\includeonly{eq_high_voltage,op_high_voltage}
+
+% Magnet
+%\includeonly{eq_magnet,op_magnet}
+%\includeonly{op_maintenance}
 \begin{document}
 
+\input{Conventions}
 
 
-\frontmatter
-
-\tableofcontents
-\listoffigures
-\listoftables
+\include{Frontmatter}
 
 \mainmatter
-
-\chapter{Introduction}
+\include{intro_intro} %%%%%%%%%%%%%%%%%% Chapter %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \include{intro_convention}
 
-\part{Equipment Tour}
-\include{eq_magnet}
-\include{eq_vpt}
+\include{eq_intro} %%%%%%%%%%%%%%%%%%%%% Part %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\include{eq_magnet} %%%%%%%%%%%%%%%%%%%% Chapter %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\include{eq_rig} %%%%%%%%%%%%%%%%%%%%%%% Chapter %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\include{eq_preamp}
 \include{eq_led}
-\include{eq_high_voltage}
-\include{eq_low_voltage}
-\chapter{National Instruments PXI Crate}
-\include{eq_pxi}
-\include{eq_readynas}
-\include{eq_building}
+\include{eq_vpt} %%%%%%%%%%%%%%%%%%%%%%% Chapter %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\include{eq_high_voltage} %%%%%%%%%%%%%% Chapter %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\include{eq_low_voltage} %%%%%%%%%%%%%%% Chapter %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\part{Operations Manual}
+\include{eq_ni_intro} %%%%%%%%%%%%%%%%%% Chapter %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\chapter{Software}
+\include{eq_building} %%%%%%%%%%%%%%%%%% Chapter %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\include{op_intro} %%%%%%%%%%%%%%%%%%%%% Part %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\include{op_software_intro} %%%%%%%%%%%% Chapter %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \include{op_software_setup}
+\include{op_readynas}
+\include{op_pxi}
 
-\chapter{Hardware}
+\include{op_hardware_intro} %%%%%%%%%%%% Chapter %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \include{op_magnet}
 \include{op_low_voltage}
 \include{op_high_voltage}
 \include{op_vpt}
 
-\chapter{Maintainence}
-\include{op_maintenance}
+\include{op_maintenance} %%%%%%%%%%%%%% Chapter %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\chapter{Experiments}
-\include{op_experiments}
+\include{op_experiments} %%%%%%%%%%%%%%% Chapter %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 

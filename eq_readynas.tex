@@ -1,7 +1,16 @@
 \section{\glsentryfirst{RNAS}}
 \label{sec:eq_readynas}
 
-\textit{NetGEAR ReadyNAS NV+}%productname
+The \textit{NetGEAR ReadyNAS NV+}%productname
+is not a National Instruments product, but in the lab it is used as an extension to the \gls{PXI Crate}.  It behaves as a secondary hard drive for the crate.  Most of the time, You will interact with the crate via the \gls{ReadyNAS}.  You'll usually log into the crate only to start and stop projects and VIs which you've uploaded to the \gls{ReadyNAS}.  You'll also download data recorded by the crate from the \gls{ReadyNAS}.
+
+\begin{avoid} directly editing VIs, viewing, or processing data drectly from the \gls{ReadyNAS}.  If you attempt to do so, state may be inconsistently shared between the crate and your own computer, with undesirable results.  You may also cause availability problems for the crate if it is attempting to record data.  If you attempt to edit projects or VIs directly on the \gls{ReadyNAS}, make sure that LabVIEW is completely shut down on the crate.
+\end{avoid}
+
+\FIXME{} Features: RAID (mode?), Remote Filesystem Access, username/pass (labview/teststand), directory structure, remote login home paths (eg /c/home/labview/ for user:labview)
+
+\FIXME{} Read Manual
+
 
 %%% Local Variables: 
 %%% mode: latex

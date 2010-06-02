@@ -1,4 +1,71 @@
+\chapter{Maintainence}
 
-\section{Maintenance}
+\section{Schedule}
 \label{sec:op_maintenance}
 
+This section lists tasks which must be done regularly to maintain the experimental equipment, or ongoing experiments.  The following vocabulary is used in this section.
+\begin{table}[h]\begin{tabular}{>{\scshape}r p{\textwidth}}
+    daily & Once per day, at any time unless otherwise specified\\
+    semi-daily & Every other day\\
+    biweekly & Twice a week, or every 3-4 days\\
+    monthly & Once per month\\
+    as needed & As often as necessary; frequency determined by another maintenance step\\
+\end{tabular}\end{table}
+
+\subsection{Under All Conditions}
+\label{sec:op_maintenance:always}
+The following tasks must be carried out whether or not an experiment is currently under way.  
+
+\begin{table}[h]\begin{tabular}{>{\scshape}r p{\textwidth}}
+    daily & Measure cryogen levels\\
+    as needed & Fill LN2 cryogen\\
+    as needed & Fill LHe cryogen\\
+    monthly & Measure magnetic field strength    
+\end{tabular}\end{table}
+
+\subsection{Experiment: VPT Stability}
+\label{sec:op_maintenance:ex_vpt_stability}
+The following tasks are only required during VPT Stability experiments.
+
+\begin{table}[h]\begin{tabular}{>{\scshape}r p{\textwidth}}
+    daily & Verify DAQ is still running\\
+    biweekly & Examine data for experimental errors
+\end{tabular}\end{table}
+
+\section{Measuring Cryogen Levels}
+\label{sec:op_maintenance:cryogen_levels}
+
+Cryogen levels should be checked daily.  Under normal conditions the cryogen evaporation rate is virtually constant.  However, checking daily will reveal if a fill was done improperly, or if a \gls{quench} occured.  
+
+\begin{enumerate}
+\item Locate the cryogen lab notebook near the cryogen guages.
+\item Record the current date and time in the notebook.
+\item Read the liquid nitrogen guage, which is always on.  Record the measurement in the notebook.
+\item To begin taking a liquid helium measurement, press the green power button to turn on the guage.
+\item Wait several seconds, then press the black ``MAN'' button to take a measurement.  The ``Sample'' light will light up.
+\item Wait until the ``Sample'' light goes out, then read the measurement from the LCD display.  It's a percentage.
+\item Record the LHe measurement in the notebook.
+\item Press the green power button to turn off the LHe guage.
+\end{enumerate}
+
+\begin{pleasedonot}
+  leave the liquid helium guage powered on.  It will unnecessarily heat the cryogens and cause them to boil off more rapidly.
+\end{pleasedonot}
+
+\section{Filling LN2 Cryogen}
+\label{sec:op_maintenance:filling_ln2}
+\begin{pleasedo} consider filling Monday and Friday, and always well before reaching 10~\% capacity. \end{pleasedo}
+\FIXME Placeholder for practiced fill
+\begin{pleasedo} move the empty dewar through the computer room and out the doors to the concrete patio. \end{pleasedo}
+
+\section{Filling LHe Cryogen}
+\label{sec:op_maintenance:filling_lhe}
+\begin{pleasedo} fill between 20\dashen30~\% capacity to use an entire LHe dewar. \end{pleasedo}
+\FIXME Placeholder for practiced fill
+\begin{pleasedo} move the empty dewar through the computer room and out the doors to the concrete patio. \end{pleasedo}
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "Manual"
+%%% End: 

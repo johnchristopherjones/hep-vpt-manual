@@ -1,0 +1,64 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\renewcommand*{\descriptionlabel}[1]{\hspace\labelsep\normalfont #1}
+\newcommand{\keys}[1]{\textsf{#1}}
+\newcommand{\command}[1]{\texttt{\textbf{#1}}}
+\newcommand{\namedfield}[1]{{\normalfont\emph{〈#1〉}}} % 〈#1〉
+\newcommand{\menu}[1]{\textsf{#1}}
+\newcommand{\menusep}{\ensuremath{\mathsf{\to}} }
+\newcommand{\noun}[1]{\textsf{#1}}
+\newcommand{\make}[1]{\textit{#1}}
+\newcommand{\model}[1]{\texttt{#1}}
+\newcommand{\makemodel}[2]{\make{#1} \model{#2}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Common expressions %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\seeref}[1]{see \ref{#1}, p.{} \pageref{#1}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% New Environments %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%% Lengths for boxes %%%%%%%%%%%%%%%%%
+\newlength{\mysymbolheight}
+\setlength{\mysymbolheight}{2em}
+
+%%%% Symbols for boxes %%%%%%%%%%%%%%%%%
+\newcommand{\warningsign}{\dejavusans{}⚠\normalfont}
+\newcommand{\checkmark}{\dejavusans{}✗\normalfont}
+\newcommand{\ballotx}{\dejavusans{}✓\normalfont}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Please Avoid %%%%%%%%%%%%%%%%%%%%%%%%%%
+\newenvironment{avoid}%
+{\begin{list}{}%
+    {\setlength{\leftmargin}{\mysymbolheight}}%
+    {\setlength{\parindent}{-2cm}}%
+    \item[]%
+      {\fontsize{\mysymbolheight}{1em}\hspace{-\mysymbolheight}\warningsign} \textbf{\sffamily AVOID}}
+{\end{list}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Please DO NOT %%%%%%%%%%%%%%%%%%%%%%%%%
+\newenvironment{pleasedonot}%
+{\begin{list}{}%
+    {\setlength{\leftmargin}{\mysymbolheight}}%
+    {\setlength{\parindent}{-2cm}}%
+    \item[]%
+      {\fontsize{\mysymbolheight}{1em}\hspace{-\mysymbolheight}\checkmark} \textbf{\sffamily DO NOT}}
+{\end{list}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Please DO  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newenvironment{pleasedo}%
+{\begin{list}{}%
+    {\setlength{\leftmargin}{\mysymbolheight}}%
+    {\setlength{\parindent}{-2cm}}%
+    \item[]%
+      {\fontsize{\mysymbolheight}{1em}\hspace{-\mysymbolheight}\ballotx} \textbf{\sffamily DO}}
+{\end{list}}
+
+\newenvironment{note}%
+{\noindent\par \itshape \small Note:\:}
+{}
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "Manual"
+%%% End: 

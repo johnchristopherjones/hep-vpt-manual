@@ -2,6 +2,8 @@
 \section{High Voltage Supply}
 \label{sec:op_high_voltage}
 
+All high voltage supply directions are carried out with the small LCD display and keyboard attached to the large red \makemodel{CAEN Nuclear}{SY1527LC} rack-mounted system.
+
 \subsection{Verifying Cable Configuration}
 \label{sec:op_high_voltage:verify_cables}
 
@@ -12,7 +14,7 @@ Inspect the back of the high voltage unit.  The module inserted in the middle, m
   \label{tab:high_voltage:group01}
   \begin{tabular}{c@{\quad\quad} l@{\quad} l@{\quad} r@{.}l@{ V\quad} r@{.}l@{ \hbox{\textmu}A\hfill}}
     \toprule
-    Channel & Cable Label & Channel Name & \multicolumn{2}{c}{Votlage} & \multicolumn{2}{c}{Current} \\
+    Channel & Cable Label & Channel Name & \multicolumn{2}{c}{Voltage} & \multicolumn{2}{c}{Current} \\
     \midrule
     0 & HV Anode 1  & VPT1-Anode  & 800&00 & 20&00 \\
     1 & HV Dynode 1 & VPT1-Dynode & 600&00 & 20&00 \\
@@ -35,6 +37,63 @@ Inspect the rig inside the superconducting solenoidal magnet.  When viewed from 
 \label{sec:op_high_voltage:verify_voltage}
 
 From the front of the rack, examine the color LCD monitor below the high voltage unit.  Verify that the voltage settings correspond to Table \ref{tab:high_voltage:group01} (p. \pageref{tab:high_voltage:group01}).
+
+\subsection{Killing the High Voltage}
+\label{sec:op_high_voltage:kill}
+
+\begin{avoid} killing the high voltage unless it's worth the risk of damaging the equipment.\end{avoid}
+
+\begin{enumerate}
+\item Turn the key to the \textit{off} position.
+\end{enumerate}
+
+\begin{pleasedo} ramp the voltage down before shutting the system down whenever possible.  See \ref{sec:op_high_voltage:rampdown} for ramp-down instructions.\end{pleasedo}
+
+\subsection{Ramping Down the High Voltage}
+\label{sec:op_high_voltage:rampdown}
+
+\FIXME{} Placeholder until detailed walkthrough can be practiced
+
+\begin{enumerate}
+\item Toggle group mode from the Groups menu
+\item Turn off any channel; while group mode is enabled all grouped channels will ramp down together.
+\end{enumerate}
+
+\subsection{Ramping Up the High Voltage}
+\label{sec:op_high_voltage:rampup}
+
+\FIXME{} Placeholder until detailed walkthrough can be practiced
+
+\begin{enumerate}
+\item Toggle group mode from the Groups menu
+\item Turn on any channel; while group mode is enabled all grouped channels will ramp down together.
+\end{enumerate}
+
+
+\subsection{Turning Off the High Voltage System}
+\label{sec:op_high_voltage:turnoff}
+
+The system rarely needs to be entirely turned off.  Channel boards and power supplies may be hot swapped, and channels only need to be ramped down before disconnecting cables.  However, there is an additional safety factor in powering the entire system down before tampering with high voltage.
+
+\begin{enumerate}
+\item Ramp down the voltage (\seeref{sec:op_high_voltage:rampdown}.)
+\item Turn the key to the \textit{off} position.
+\end{enumerate}
+
+\subsection{Turning On the High Voltage System}
+\label{sec:op_high_voltage:turnoff}
+
+To turn the high voltage on from a power-off state:
+\begin{enumerate}
+\item Turn the key to the \textit{local} position.
+\item Ramp up the voltage (\seeref{sec:op_high_voltage:rampup}.)
+\end{enumerate}
+
+\begin{note}
+  In the future, the key may need to be turned to \emph{remote}.  Check with the experiment maintainer if there are cables connected to the front panel.
+\end{note}
+
+
 %%% Local Variables: 
 %%% mode: latex
 %%% TeX-master: "Manual"
