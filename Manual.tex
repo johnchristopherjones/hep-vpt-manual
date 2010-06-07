@@ -29,6 +29,9 @@
 \usepackage{graphics}
 \usepackage{tikz}
 %\usetikzlibrary{trees}
+\usetikzlibrary{shapes.misc}
+\usetikzlibrary{snakes}
+\usetikzlibrary{scopes}
 \usepackage{xcolor}
 \usepackage[pagebackref, bookmarks, colorlinks, breaklinks,
 plainpages=false, pdfpagelabels, linktocpage,
@@ -53,18 +56,6 @@ linkcolor = red, citecolor = blue, filecolor = blue, urlcolor = blue
 
 
 
-\newboolean{useDejaVu}
-\setboolean{useDejaVu}{false}
-\ifthenelse{\boolean{useDejaVu}}
-{
-    \setmainfont[Scale=0.86]{DejaVu Serif}
-    \setmonofont[Scale=0.86]{DejaVu Sans Mono}
-    \setsansfont[Scale=0.86]{DejaVu Sans}
-}{
-    % \setmainfont{}
-    \setsansfont[Scale=0.86]{Lucida Grande}  % Used for greater unicode coverage
-    \setmonofont[Scale=0.86]{Anonymous Pro}
-}
 
 \newfontfamily      \dejavuserif
   [ UprightFont    = DejaVu Serif,
@@ -87,6 +78,18 @@ linkcolor = red, citecolor = blue, filecolor = blue, urlcolor = blue
     BoldItalicFont = DejaVu Sans Mono Bold Oblique,]
   {DejaVu Sans Mono}
 
+\newboolean{useDejaVu}
+\setboolean{useDejaVu}{false}
+\ifthenelse{\boolean{useDejaVu}}
+{
+    \setmainfont[Scale=0.86]{DejaVu Serif}
+    \setmonofont[Scale=0.86]{DejaVu Sans Mono}
+    \setsansfont[Scale=0.86]{DejaVu Sans}
+}{
+    % \setmainfont{}
+    \setsansfont[Scale=0.86]{Lucida Grande}  % Used for greater unicode coverage
+    \setmonofont[Scale=0.86]{Anonymous Pro}
+}
 
 
 
@@ -161,10 +164,13 @@ linkcolor = red, citecolor = blue, filecolor = blue, urlcolor = blue
 % Magnet
 %\includeonly{eq_magnet,op_magnet}
 %\includeonly{op_maintenance}
+%\includeonly{eq_intro}
+
 \begin{document}
 
 \input{Conventions}
 
+\maketitle
 
 \include{Frontmatter}
 
@@ -183,6 +189,9 @@ linkcolor = red, citecolor = blue, filecolor = blue, urlcolor = blue
 \include{eq_low_voltage} %%%%%%%%%%%%%%% Chapter %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \include{eq_ni_intro} %%%%%%%%%%%%%%%%%% Chapter %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% eq_pxi
+% eq_labview
+% eq_readynas
 
 \include{eq_building} %%%%%%%%%%%%%%%%%% Chapter %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -218,7 +227,10 @@ linkcolor = red, citecolor = blue, filecolor = blue, urlcolor = blue
 \backmatter
 
 \end{document}
+
+
+
 %%% Local Variables: 
 %%% mode: latex
-%%% TeX-master: t
+%%% TeX-master: "Manual"
 %%% End: 

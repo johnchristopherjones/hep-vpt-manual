@@ -15,6 +15,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%% Common expressions %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand{\seeref}[1]{see \ref{#1}, p.{} \pageref{#1}}
+\newcommand{\secnameref}[1]{\S\ref{#1}~\nameref{#1}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%% New Environments %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -58,6 +59,29 @@
 \newenvironment{note}%
 {\noindent\par \itshape \small Note:\:}
 {}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Title Page %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\renewcommand*{\maketitle}{
+  \begin{figure}[p]\centering
+  \begin{tikzpicture}
+    \draw[line width=4pt] (2in,0in) -- ++(down:8in);
+    \begin{scope}[yshift=-1in,xshift=-.5in]
+      \draw (3in,0)      node[anchor=west] {\HUGE \bfseries Operating Instructions};
+      \draw (3in,-.5in)  node[anchor=west] {\HUGE for VPT Experiments};
+      \draw (3in,-1in)   node[anchor=west] {\huge at UVa's HEP Laboratory};
+      \draw (3in,-2.25in)   node[anchor=west] {\itshape Written by};
+      \draw (3in,-2.5in) node[anchor=west] {\Large John Christopher Jones};
+      \draw (3in,-3.5in) node[anchor=west] {\Large Summer 2010};
+      \draw (3in,  -5in) node[anchor=west,red] {\HUGE \bfseries [DRAFT]};
+    \end{scope}
+  \end{tikzpicture}
+  \end{figure}
+\newpage}
+
 %%% Local Variables: 
 %%% mode: latex
 %%% TeX-master: "Manual"

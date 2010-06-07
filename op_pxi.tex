@@ -5,6 +5,19 @@
 \subsection{Logging into the PXI Crate (RDP)}
 \label{sec:op_pxi:rdp}
 
+\subsubsection{Mac}
+\label{sec:op_pxi:rdp:mac}
+
+You'll need to download and install Microsoft's \href{http://www.microsoft.com/mac/products/remote-desktop/default.mspx}{Remote Desktop Connection Client for Mac}.
+
+\begin{enumerate}
+\item Launch \menu{Remote Desktop Connection for Mac}.  (Typing ``rdp'' in \menu{Spotlight} will bring it up once installed.)
+\item In the ``Computer:'' field, enter the IP address \texttt{128.143.196.230}.  Press \menu{Connect}.
+\item When prompted, use the username \texttt{administrator} and password \texttt{UVAVPT}
+\end{enumerate}
+
+If desired, you can make local (Mac) hard drives and printers available to the PXI Crate while you're logged in by editing the connection (\menu{File \menusep Edit a Connection}.)
+
 \subsection{Launching LabVIEW}
 \label{sec:op_pxi:labview_launch}
 
@@ -14,14 +27,51 @@
 \subsection{Starting Data Acquisition}
 \label{sec:op_pxi:daq_start}
 
+\begin{enumerate}
+\item Open the \textit{VPT Stability} project as in \S\ref{sec:op_pxi:project_vptstability}.
+\item Open the \menu{Host - Main.vi} VI from the project file viewer.
+\item Press the \pgfimage[width=1em,interpolate=true]{figures/labview_button_runonce} \menu{Run Once} button.  You will be prompted for information.
+  \begin{itemize}
+  \item VPT 1\dashen5 reference numbers
+  \item Angle in field (degrees)
+  \item Min.{} wait time (seconds)
+  \item Load on/off time (hours)
+  \end{itemize}
+\end{enumerate}
+
 \subsection{Stopping Data Acquisition}
 \label{sec:op_pxi:daq_stop}
+
+
+
+\begin{enumerate}
+\item If necessary, log into the PXI crate as in \secnameref{sec:op_pxi:rdp}.
+\item Locate the \menu{Host - Main.vi} window, listed under the \menu{Window} menu of any LabVIEW window.  The front panel is preferable, but not necessary.
+\item Hit the \pgfimage[width=1em,interpolate=true]{figures/labview_button_stop} \menu{Stop} button.
+\end{enumerate}
 
 \subsection{Restarting Data Acquisition}
 \label{sec:op_pxi:daq_restart}
 
+Follow this procedure if you were taking data and wish to start over with the same VPTs.
+\begin{enumerate}
+\item If desired, copy the old data files to a safe location.
+\item Delete the original data files.
+\item Begin following \secnameref{sec:op_pxi:daq_start}.
+\end{enumerate}
+
 \subsection{Resuming Data Acquisition}
 \label{sec:op_pxi:daq_resume}
+
+Follow this procedure if you wish to resume recording data to the same files after an interruption.
+\begin{enumerate}
+\item If necessary, log into the PXI crate as in \S\ref{sec:op_pxi:rdp}.
+\item Locate one of the data files and open it in a text editor.  Copy the first column of the last line.  This is the time offset to resume at.
+\item If necessary, start LabVIEW (\S\ref{sec:op_pxi:labview_launch}), open project \textit{VPT Stability} (\S\ref{sec:op_pxi:project_vptstability}), and/or open \menu{Host - Main.vi}.
+\item On the top row of the \menu{Host - Main.vi} front panel is a text input box labeled \menu{Test Start Time Offset}.  Click to edit the contents and Paste the time offset from step 2.
+\item Press the \pgfimage[width=1em,interpolate=true]{figures/labview_button_runonce} \menu{Run Once} button.  When prompted, enter the original VPT numbers, and the rest of the information as before.
+\end{enumerate}
+
 
 \subsection{Shutting Down The Crate (software)}
 \label{sec:op_pxi:shutdown_software}

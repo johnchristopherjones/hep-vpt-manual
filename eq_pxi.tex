@@ -11,7 +11,7 @@ What we refer to as the ``PXI Crate'' or just ``the crate'' is a \textit{Nationa
 \begin{figure}[htbp]
   \centering
   {\tiny
-    Taken from \textit{National Instruments NI PXI-1042 Series User Manual and Specifications}
+    Taken from \textit{National Instruments NI PXI-1042 Series User Manual and Specificationggs}
   }
   \pgfimage[interpolate=true]{figures/ni_pxi_1042_front}
   \caption{Front View of the PXI-1042 Chasis}
@@ -55,14 +55,14 @@ The chasis at HEP is configured with the following modules, described in the fol
 % \end{center}\end{table}
 
 
-\newcommand*{\pxilabel}[1]{\hspace\labelsep \normalfont\bfseries #1}
-\begin{labelled}{pxilabel}
+\newcommand*{\pxilabelled}[1]{\hspace\labelsep \normalfont\bfseries #1}
+\begin{labelled}{pxilabelled}
 
   \item[\pxislotone{} \texttt{PXI-8104}\hspace{.25em} Embedded Computer]
     A full-featured embedded computer running Windows XP (downgraded from Windows Vista Business by default by \gls{NI}).  This module ultimately controls all the other components in the crate.  It hosts an RDP server for remote login.  The maximum amount of RAM has been installed, 2~GiB, as two SO-DIMMs of PC2-5300~1~GiB, 128~MiB$\times$64, CL~5, 1.18~in.~max (\gls{NI} part number 779302-1024.)  Spec-wise, it features a Celeron M 440 (1.86~GHz single-core), a 60~GiB SATA hard drive, and gigabit ethernet.  As it occupies the \gls{System Controller} slot, it is generally referred to as the \textit{system controller} in \gls{NI} literature.  For detailed information see the \href{National Instruments Manuals/NI PXI-8104 User Manual}{PXI-8104 User Manual}.  The internal hard drive is only used for system and experiment software.  All experimental data is stored on the \gls{ReadyNAS}.  
 
   \item[\pxislottwo{} \texttt{PXI-7851R}\hspace{.25em} \gls{FPGA}]
-    Essentially a reprogrammable integrated circuit, the FPGA controls all the real-time trigger signals.  The module itself has a break-out box connector, and this break-out box houses the connections to devices which receive external trigger signals.  (Namely, the LED pulser boards.)  For operating instructures, such as how to program the FPGA from the embedded computer system controller, see section \ref{sec:op_pxi:fpga} on page \pageref{sec:op_pxi:fpga}.
+    Essentially a reprogrammable integrated circuit, the FPGA controls all the real-time trigger signals.  The module itself has a break-out box connector, and the break-out box houses the connections to devices which receive external trigger signals.  (Namely, the LED pulser boards.)  For operating instructions, such as how to program the FPGA from the embedded computer system controller, see section \seeref{sec:op_pxi:fpga}.  The break out box is an \makemodel{NI}{SCB-68}.
 
   \item[\pxislotn{3} \texttt{\FIXME}\hspace{.25em} 24-Channel two-wire Multiplexer]
     Referred to as ``the switch.''  Featuring a single large external port, the switch connects any of a 24 two-wire channels to the internal busses.  Generally all external instrumentation is received through this peripheral.  The switching mechanism is software controlled.  An \texttt{NI TB-2605} multiplexing terminal block is currently mounted directly on it.\\\noindent
