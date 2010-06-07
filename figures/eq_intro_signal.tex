@@ -1,0 +1,93 @@
+\begin{tikzpicture}
+  \begin{scope}[xshift=10cm]
+    %%%% North Endcap %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \begin{scope}[yscale=-1,fill=white]
+      \draw[black,xscale=0.3,yscale=0.25,yshift=-7.1cm,fill=white]
+           (-2,-1.2) coordinate (a)
+        -- coordinate (ab) (-2,0) coordinate (b)   
+        .. coordinate (bc) controls (-2,0.2) and (2,0.2) .. (2,0) coordinate (c)
+        -- (2,-1.2) coordinate (d)
+        .. coordinate (de) controls (2,-1.4) and (-2,-1.4) .. (-2,-1.2) coordinate (e);
+      \draw[black,xscale=0.91,yscale=0.91,yshift=-.18cm,fill=white]
+           (-2,-1.2) coordinate (sea)
+        .. coordinate (ad) controls (-2,-1.0) and (2,-1.0) .. (2,-1.2)
+        .. coordinate (de) controls (2,-2.15) and (-2,-2.15) .. (-2,-1.2) coordinate (-2,-1.2);
+    \end{scope}
+
+    %%%% Barrel %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \draw[black,fill=white]
+          (-2,-1.2) coordinate (a)
+       -- coordinate (ab) (-2,1.2) coordinate (b) 
+       .. coordinate (bc) controls (-2,1.4) and (2,1.4) .. (2,1.2) coordinate (c)
+       -- (2,-1.2) coordinate (d)
+       .. coordinate (de) controls (2,-1.4) and (-2,-1.4) .. (-2,-1.2) coordinate (e)
+       .. coordinate (ad) controls (-2,-1.0) and (2,-1.0) .. (d);
+
+    \draw[black,fill=white]
+         (-2.11,-.13)
+      -- ++(0,.2)
+      .. controls (-2,.36) and (2,.36) .. (2.11,.07)
+      -- ++(0,-.2);
+
+    \draw[black,fill=white]
+         (-2,-.2)
+      .. controls (-2,0) and (2,0) .. ( 2,-.2)
+      .. controls (3,.08) and (-3,.08) .. (-2,-.2) --cycle;
+
+    %%%% South Endcap %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \begin{scope}
+    \draw[xscale=0.91,yscale=0.91,yshift=-.18cm,fill=white]
+         (-2,-1.2) coordinate (sea)
+      .. coordinate (ad) controls (-2,-1.0) and (2,-1.0) .. (2,-1.2)
+      .. coordinate (de) controls (2,-2.15) and (-2,-2.15) .. (-2,-1.2) coordinate (-2,-1.2);
+    \draw[xscale=0.3,yscale=0.25,yshift=-7.1cm,fill=white]
+         (-2,-1.2) coordinate (a)
+      -- coordinate (ab) (-2,0) coordinate (b) 
+      .. coordinate (bc) controls (-2,0.2) and (2,0.2) .. (2,0) coordinate (c)
+      -- (2,-1.2) coordinate (d)
+      .. coordinate (de) controls (2,-1.4) and (-2,-1.4) .. (-2,-1.2) coordinate (e)
+      .. coordinate (ad) controls (-2,-1.0) and (2,-1.0) .. (d);
+    \end{scope}
+  \end{scope}
+
+  \node at (1,0) {\bfseries PXI Crate};
+  \begin{scope}[xshift=1cm]
+    \node[chamfered rectangle, white, fill=blue, double=blue, draw, very thick]
+    (FPGA) at (0,-1) {\bfseries FPGA};
+    \node[chamfered rectangle, white, fill=blue, double=blue, draw, very thick]
+    (Switch) at (0,1) {\bfseries Switch};
+  \end{scope}
+
+  \draw[very thick]
+         (FPGA)
+      -- ++(down:2cm) coordinate (aa);
+  \draw[very thick]
+         (10,-3) coordinate (bb)
+      -- ++(up:1cm-.05cm);
+
+  \draw (aa) -- (bb)
+    -- ++(up:.2) -- ++(left:9)
+    -- ++(up:.2) -- ++(right:9);
+
+  \node[fill=white] at (10-4.5-1.2,-2.6)  {\tiny Load};
+  \node[fill=white] at (10-4.5,-2.8)  {\tiny Soak};
+  \node[fill=white] at (10-4.5+1.5,-3)  {\tiny Reference};
+
+  \draw[very thick]
+       (Switch)
+    -- ++(up:2) coordinate (cc);
+  \draw[very thick]
+       (10,3) coordinate (dd)
+    -- ++(down:1-.1);
+  \draw (cc) -- (dd)
+    -- ++(down:.2) -- ++(left:9)
+    -- ++(down:.2) -- ++(right:9)
+    -- ++(down:.2) -- ++(left:9)
+    -- ++(down:.2) -- ++(right:9);
+ 
+  \node[fill=white] at (10-4.5-1.2,2.6) {\tiny Anode};
+  \node[fill=white] at (10-4.5,2.8) {\tiny Cathode};
+  \node[fill=white] at (10-4.5+1.5,3.02) {\tiny Dynode};
+  \node[fill=white] at (10-4.5+1.5,2.4) {\tiny PIN Diode};
+  \node[fill=white] at (10-4.5,2.15) {\tiny Amplifier};
+\end{tikzpicture}
