@@ -1,15 +1,22 @@
 \section{\glsentryfirst{RNAS}}
 \label{sec:eq_readynas}
 
-The \textit{NetGEAR ReadyNAS NV+}%productname
-is not a National Instruments product, but in the lab it is used as an extension to the \gls{PXI Crate}.  It behaves as a secondary hard drive for the crate.  Most of the time, You will interact with the crate via the \gls{ReadyNAS}.  You'll usually log into the crate only to start and stop projects and VIs which you've uploaded to the \gls{ReadyNAS}.  You'll also download data recorded by the crate from the \gls{ReadyNAS}.
+The \gls{RNAS} is a ready-made NAS solution.  NAS is an acronym for \textit{Network-Attached Storage}, a file-level (as opposed to block-level) remote storage system.  The \href{http://www.netgear.com/Products/Storage/ReadyNASNVPlus.aspx}{NetGEAR ReadyNAS NV+} acts as a network filesystem for the \gls{PXI Crate} in addition to the crate's native filesystem on its local SATA hard drive.
 
-\begin{avoid} directly editing VIs, viewing, or processing data drectly from the \gls{ReadyNAS}.  If you attempt to do so, state may be inconsistently shared between the crate and your own computer, with undesirable results.  You may also cause availability problems for the crate if it is attempting to record data.  If you attempt to edit projects or VIs directly on the \gls{ReadyNAS}, make sure that LabVIEW is completely shut down on the crate.
-\end{avoid}
+Much of your interaction with the crate will happen indirectly, via the \gls{RNAS}.  You'll usually want to edit VIs locally and then upload them to the \gls{RNAS} when its time to update the experiment's software.  VIs are usually programmed to log their data to the \gls{RNAS}, so you'll retreive the latest data from the \gls{RNAS} as well.
 
-\FIXME{} Features: RAID (mode?), Remote Filesystem Access, username/pass (labview/teststand), directory structure, remote login home paths (eg /c/home/labview/ for user:labview)
+The main exception to this is any VI which requires access to the crate's peripheral hardware, such as the FPGA, DMM, oscilloscope, or switches.  These components need to be programmed and tested from LabVIEW on the PXI Crate itself, as in \secnameref{sec:op_pxi:rdp}.
 
-\FIXME{} Read Manual
+%The \gls{RNAS} is configured for FTP access, with the username ``\texttt{labview}'' and the password ``\texttt{teststand}''.  
+The \gls{RNAS} is configured for FTP access.  
+For FTP directions, see \secnameref{sec:op_start:vptvi} and \secnameref{sec:op_start:data}.
+
+\begin{pleasedonot} upload VIs without first making sure that LabVIEW on the crate has closed those VIs.\end{pleasedonot}
+
+\begin{pleasedonot} directly edit VIs or use viewing or processing VIs to view or edit data directly from the \gls{RNAS} if you have chosen to mount the remote filesystem.  You may corrupt LabVIEW state (on the crate or your own computer), or cause availability or timing errors in ongoing experiments.\end{pleasedonot}
+
+\begin{pleasedo} make a local copy of any VI or data you wish to use.  You may safely copy data files while they are being written to.\end{pleasedo}
+
 
 
 %%% Local Variables: 

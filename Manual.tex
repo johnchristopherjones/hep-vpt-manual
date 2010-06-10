@@ -4,6 +4,11 @@
 %%%% Logic %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % \foreach loop provided by PGF/tikz
 \usepackage{ifthen}
+\newboolean {draft}
+\newboolean {useDejaVu}
+
+\setboolean {draft}     {true}  % Draft-only features, like linenumbers
+\setboolean {useDejaVu} {false} % Entire Font Family = Deja Vu
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -41,6 +46,7 @@ linkcolor = red, citecolor = blue, filecolor = blue, urlcolor = blue
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%% Tables %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{booktabs}
+\usepackage{multirow}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%% Code %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -52,9 +58,6 @@ linkcolor = red, citecolor = blue, filecolor = blue, urlcolor = blue
 
 \usepackage[final]{pdfpages}
 \fixpdflayout
-
-
-
 
 
 \newfontfamily      \dejavuserif
@@ -78,8 +81,6 @@ linkcolor = red, citecolor = blue, filecolor = blue, urlcolor = blue
     BoldItalicFont = DejaVu Sans Mono Bold Oblique,]
   {DejaVu Sans Mono}
 
-\newboolean{useDejaVu}
-\setboolean{useDejaVu}{false}
 \ifthenelse{\boolean{useDejaVu}}
 {
     \setmainfont[Scale=0.86]{DejaVu Serif}
@@ -91,6 +92,15 @@ linkcolor = red, citecolor = blue, filecolor = blue, urlcolor = blue
     \setmonofont[Scale=0.86]{Anonymous Pro}
 }
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Draft Settings %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifthenelse{\boolean{draft}}
+{
+  \usepackage[right]{lineno}
+}{
+  
+}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -125,6 +135,8 @@ linkcolor = red, citecolor = blue, filecolor = blue, urlcolor = blue
 % Hanging subsection numbers
 % \setsubsecindent{-3em + -2ex}
 
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%% Glossary Support %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -145,11 +157,11 @@ linkcolor = red, citecolor = blue, filecolor = blue, urlcolor = blue
 %%%% External Graphics %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \pgfrealjobname{Manual} % Part of processing 
 \input{Graphics} % External graphics, gobbled into \newcommands
-% \pxislotone \pxislottwo \pxislotn{#1}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%% Editting Notes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newcommand{\FIXME}{{\normalfont\scshape[\small fixme]}}
+\newcommand{\FIXME}{{\normalfont\scshape[\small \textcolor{red}{fixme}]}​}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%% BEGIN DOCUMENT %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -160,57 +172,63 @@ linkcolor = red, citecolor = blue, filecolor = blue, urlcolor = blue
 
 % Completed For Now
 %\includeonly{eq_high_voltage,op_high_voltage}
+%\includeonly{eq_low_voltage,eq_rig,op_low_voltage,op_rig}
 
 % Magnet
 %\includeonly{eq_magnet,op_magnet}
 %\includeonly{op_maintenance}
-%\includeonly{eq_intro}
+
 
 \begin{document}
-
+\ifthenelse{\boolean{draft}}
+{
+  \linenumbers
+}{
+}
 \input{Conventions}
-
 \maketitle
-
 \include{Frontmatter}
 
 \mainmatter
-\include{intro_intro} %%%%%%%%%%%%%%%%%% Chapter %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\include{intro_intro} 
 \include{intro_convention}
 
-\include{eq_intro} %%%%%%%%%%%%%%%%%%%%% Part %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\include{eq_magnet} %%%%%%%%%%%%%%%%%%%% Chapter %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\include{eq_rig} %%%%%%%%%%%%%%%%%%%%%%% Chapter %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\include{eq_intro} 
+\include{previous_results}
+\include{further_reading}
+
+\include{eq_magnet}
+\include{eq_rig}
 \include{eq_preamp}
 \include{eq_led}
-\include{eq_vpt} %%%%%%%%%%%%%%%%%%%%%%% Chapter %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\include{eq_vpt}
 
-\include{eq_high_voltage} %%%%%%%%%%%%%% Chapter %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\include{eq_low_voltage} %%%%%%%%%%%%%%% Chapter %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\include{eq_high_voltage}
+\include{eq_low_voltage}
 
-\include{eq_ni_intro} %%%%%%%%%%%%%%%%%% Chapter %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\include{eq_ni_intro}
 % eq_pxi
 % eq_labview
 % eq_readynas
 
-\include{eq_building} %%%%%%%%%%%%%%%%%% Chapter %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\include{eq_building} 
 
-\include{op_intro} %%%%%%%%%%%%%%%%%%%%% Part %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\include{op_software_intro} %%%%%%%%%%%% Chapter %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\include{op_intro} 
+\include{op_software_intro} 
 \include{op_software_setup}
 \include{op_readynas}
 \include{op_pxi}
+\include{op_labview}
 
-\include{op_hardware_intro} %%%%%%%%%%%% Chapter %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\include{op_hardware_intro} 
 \include{op_magnet}
 \include{op_low_voltage}
 \include{op_high_voltage}
 \include{op_vpt}
 
-\include{op_maintenance} %%%%%%%%%%%%%% Chapter %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\include{op_maintenance} 
 
-\include{op_experiments} %%%%%%%%%%%%%%% Chapter %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+\include{op_experiments} 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

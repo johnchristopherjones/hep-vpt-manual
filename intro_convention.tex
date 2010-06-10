@@ -1,6 +1,7 @@
-\section{Conventions Used \textcolor{red}{DRAFT}}
+\section{Conventions Used \textcolor{red}{[DRAFT]}}
+\label{sec:intro:conventions}
 
-The following conventions are used in this text.
+The following conventions are used in this text:
 
 \begin{description}
 
@@ -8,21 +9,23 @@ The following conventions are used in this text.
     used with \menusep between the menu items.
   \item[\keys{keys}] For short key sequences that sould be pressed, a sans-serif font is used.
   \item[\path{/foo/bar}] For directories, filenames, and paths, a mono-spaced font is used.
-  \item[\command{command -options filename.ext}] For command which should be
+  \item[\command{command -options filename.ext}] For commands that should be
     entered literally into a terminal, a bold mono-spaced font is used.
   \item[\command{--filename \namedfield{named field}}] For options the user should supply,
     a brief description of the option is surrounded in angle brackets.
-  \item[\noun{LabVIEW}] For proper nouns of software, like application names and operating systems, a sans-serif font is used. (\FIXME An italic or normal font may improve readability.)
+  \item[\noun{LabVIEW}] For software, application names, and operating systems, a sans-serif font is used. (\FIXME An italic or normal font may improve readability.)
+  \item[\make{CAEN}] The maker of a component is typeset this way.
   \item[\makemodel{CAEN}{SY1527LC}] The make (manufacturer) and model number of a component are typeset this way.
-  \item[\make{CAEN}] Just the maker of a component is typeset this way.
-  \item[\model{SY1527}] Just the model number of a component is typeset this way.
+  \item[\model{SY1527}] The model number of a component is typeset this way.
 
 \end{description}
 
+\section{Advisories}
+\label{sec:intro:advisories}
 
-\begin{avoid} hazards pointed out by the warning signs, unless duly considered. \end{avoid}
+\begin{avoid} hazards pointed out by the warning signs. \end{avoid}
 \begin{pleasedo} read positive recommendations in boxes like this. \end{pleasedo}
-\begin{pleasedonot} ignore negative recommendations without due consideration. \end{pleasedonot}
+\begin{pleasedonot} ignore negative recommendations without consulting with the experiment maintainer. \end{pleasedonot}
 
 \section{Symbols Used}
 \label{sec:intro:symbols}
@@ -31,22 +34,6 @@ The following conventions are used in this text.
 \label{sec:intro:keyboard_symbols}
 For brevity and consistency, a number of standard symbols are used to represent keyboard keys.  These conventions were largely adopted from \noun{Mac~OS~X}.
 
-% Glyph addresses taken from:
-% http://www.macosxhints.com/article.php?story=20071028203517911
-% OS X 10.6 uses Lucida Grande for these symbols
-\newcommand{\shiftkey}      {\textsf{⇧}} % U+21E7
-\newcommand{\controlkey}    {\textsf{⌃}} % U+2303
-\newcommand{\optionkey}     {\textsf{⌥}} % U+2325
-\newcommand{\commandkey}    {\textsf{⌘}} % U+2318
-\newcommand{\deleterightkey}{\textsf{⌦}} % U+2326
-\newcommand{\deleteleftkey} {\textsf{⌫}} % U+232B
-\newcommand{\escapekey}     {\textsf{⎋}} % U+238B
-\newcommand{\returnkey}     {\textsf{↩}} % U+21A9
-\newcommand{\leftkey}       {\textsf{←}} % U+2190
-\newcommand{\upkey}         {\textsf{↑}} % U+2191
-\newcommand{\rightkey}      {\textsf{→}} % U+2192
-\newcommand{\downkey}       {\textsf{↓}} % U+2193
-\newcommand{\tabkey}        {\textsf{⇥}} % U+21E5
 \begin{table}[htbp]\begin{center}
     \caption{Keyboard Symbols}
     \label{tab:intro:keyboard_symbols}
@@ -55,27 +42,27 @@ For brevity and consistency, a number of standard symbols are used to represent 
       \toprule %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
       Symbol          & Name            & Also known as \\
       \midrule %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-      \shiftkey       & Shift           & \textit{Shift key}\\
-      \controlkey     & Control         & \textit{Control key}\\
-      \optionkey      & Option          & On Windows: \textit{Alt key}\\
-      \commandkey     & Command         & On Windows: \textit{Windows key}\\
-      \deleterightkey & Delete Right    & \textit{Delete key}\\
-      \deleteleftkey  & Delete Left     & \textit{Backspace key}.\\
-      \escapekey      & Escape          & \textit{Escape key}\\
-      \returnkey      & Return          & Sometimes: \textit{Enter key}\\
-      \leftkey        & Left            & \textit{Left-arrow key}\\
-      \upkey          & Up              & \textit{Up-arrow key}\\
-      \rightkey       & Right           & \textit{Right-arrow key}\\
-      \downkey        & Down            & \textit{Down-arrow key}\\
-      \tabkey         & Tab             & \textit{Tab key}\\
+      \shiftkey       & Shift           & \textit{Shift}\\
+      \controlkey     & Control         & \textit{Control}\\
+      \optionkey      & Option          & On Windows: \textit{Alt}\\
+      \commandkey     & Command         & On Windows: \textit{Windows}\\
+      \deleterightkey & Delete Right    & \textit{Delete}\\
+      \deleteleftkey  & Delete Left     & \textit{Backspace}\\
+      \escapekey      & Escape          & \textit{Escape}\\
+      \returnkey      & Return          & Sometimes: \textit{Enter}\\
+      \leftkey        & Left            & \textit{Left-arrow}\\
+      \upkey          & Up              & \textit{Up-arrow}\\
+      \rightkey       & Right           & \textit{Right-arrow}\\
+      \downkey        & Down            & \textit{Down-arrow}\\
+      \tabkey         & Tab             & \textit{Tab}\\
       \bottomrule %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \end{tabular}
 \end{center}\end{table}
 
 
-Four of these keys are \textit{modifiers}: \commandkey , \shiftkey , \controlkey , \optionkey .  These keys do nothing on their own (except for \commandkey\  under Windows, which toggles the \textsf{Start Menu}), and have to be combined with another character.  This is denoted by joining two keys, such as \keys{\commandkey C} (Copy, \textsf{OS~X}) or  \keys{\controlkey C} (Copy, \textsf{Windows}).
+Four of these keys are \textit{modifiers}: \commandkey , \shiftkey , \controlkey , \optionkey .  These keys do nothing on their own (except for \commandkey, which toggles the \textsf{Start Menu} in Windows), and have to be combined with another character.  This is denoted by joining two keys, such as \keys{\commandkey C} (Copy, \textsf{OS~X}) or  \keys{\controlkey C} (Copy, \noun{Windows}).
 
-Should it be necessary to describe a \textit{key chord}, which is a sequence of keys which are pressed and released, the individual strokes will be separated by spaces.  For instance, the \textsf{Save~As} command in \textsf{Emacs} can be called by holding \textit{control} while pressing and releasing \texttt{\textbf{x}}, pressing and releasing \texttt{\textbf{s}}, then releasing \textit{control}.  Or, in other words: \keys{\controlkey x \controlkey s}
+%Should it be necessary to describe a \textit{key chord}, which is a sequence of keys which are pressed and released, the individual strokes will be separated by spaces.  For instance, the \textsf{Save~As} command in \textsf{Emacs} can be called by holding \textit{control} while pressing and releasing \texttt{\textbf{x}}, pressing and releasing \texttt{\textbf{s}}, then releasing \textit{control}.  Or, in other words: \keys{\controlkey x \controlkey s}
 
 %%% Local Variables: 
 %%% TeX-master: "Manual"

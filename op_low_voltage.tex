@@ -1,5 +1,38 @@
-
-\section{Low Voltage Supply}
+\chapter{Low Voltage Supply}
 \label{sec:op_low_voltage}
 
+For operating instructions, including troubleshooting, reference the \href{Manuals/9130_manual.pdf}{BK Precision 9130 User Manual}, or the \href{http://www.bkprecision.com/products/model/9130/triple-output-programmable-dc-power-supply.html}{BK Precision Model 9130 product page}.
 
+\section{Panel Controls}
+\label{sec:op_low_voltage:panel_controls}
+
+The \keys{On/Off} key controls the output state (on/off) of all three channels simultaneously.  To control the output state of an individual channel, use the number keys 1\dashen3.
+
+Use the 1\dashen3 keys to set the output state of channels 1\dashen3.  Similarly, use 4\dashen6 keys to set the voltage, and 7\dashen9 keys to set the current for each channel.
+
+\section{Setting Voltage}
+\label{sec:op_low_voltage:set_voltage}
+There are three different methods to set the voltage:
+\begin{enumerate}
+\item Press \keys{V-set}.  Enter a numeric value with the keypad, then press \keys{Enter}.
+\item Press \keys{V-set}.  Then use the \upkey\downkey\ arrow keys to select a channel.  Adjust the voltage with the knob.
+\item Press the \keys{4}, \keys{5}, or \keys{6} key to select channel 1, 2, or 3.  Then enter a numerical value on the keypad.  Then press Enter.
+\end{enumerate}
+
+\section{Setting Current}
+\label{sec:op_low_voltage:set_current}
+There are three different methods to set the current.  They are identical to the methods to set the voltage, except that you press \keys{I-set} instead of \keys{V-set}, and the keys \keys{7}, \keys{8}, or \keys{9} instead of \keys{4}, \keys{5}, or \keys{6}.
+\begin{enumerate}
+\item Press \keys{I-set}.  Enter a numeric value with the keypad, then press \keys{Enter}.
+\item Press \keys{I-set}.  Then use the \upkey\downkey\ arrow keys to select a channel.  Adjust the voltage with the knob.
+\item Press the \keys{7}, \keys{8}, or \keys{9} key to select channel 1, 2, or 3.  Then enter a numerical value on the keypad.  Then press Enter.
+\end{enumerate}
+
+\section{System Set}
+\label{sec:op_low_voltage:system_set}
+System Set is a menu available from the \keys{Menu} button.  One of the things it allows you to do is set channels for series or parallel operation.  Supply two should have \menu{Out Serial Set} set to 1+3.  For serial use, Ch1$-$ should be connected to Ch3$+$, and Ch1$+$ and Ch3$-$ should connect to the load.  (Ch 2$+$3 serial operation is not permitted.)
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "Manual"
+%%% End: 

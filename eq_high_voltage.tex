@@ -1,10 +1,10 @@
 
-\chapter{\textit{CAEN Nuclear} High Voltage Supply}
+\chapter{High Voltage Supply}
 \label{chap:eq_high_voltage}
 
 Our high voltage supply is made by \href{http://www.caen.it/}{CAEN}.  \make{CAEN} is one of the main companies responsible for the design and manufacturing of components in ATLAS, CMS, ALICE, and LHCb.  To date, \make{CAEN} has supplied the LHC with 6138~units.  The modular \make{CAEN} high voltage supply replaced an aging power supply in 2009.  % crate failure event
 
-Our high voltage modules are housed in an 8U-high 19~inch-wide \makemodel{CAEN}{SY1527LC} \textit{Universal Multichannel Power Supply System}, which acts as a chasis and system controller for the various installed modules.  The \model{SY1527} system has four main sections.  On the front are the CPU and Front Panel section, and the Power Supply section.  On the rear are the Board Section and the Fan Unit.  The \model{LC} designation means ``low cost,'' and refers to lack of a built-in LCD screen, compact switch, alphanumeric keyboard, and I/O Control section.  
+Our high voltage modules are housed in an 8U-high 19~inch-wide \makemodel{CAEN}{SY1527LC} \textit{Universal Multichannel Power Supply System}, which acts as a chasis and system controller for the various installed modules.  The \model{SY1527} system has four main sections:  On the front are the CPU and Front Panel section, and the Power Supply section.  On the rear are the Board Section and the Fan Unit.  The \model{LC} designation means ``low cost,'' and refers to lack of a built-in LCD screen, compact switch, alphanumeric keyboard, and I/O Control section.  
 
 \begin{figure}[htbp]
   \centering
@@ -16,14 +16,14 @@ Our high voltage modules are housed in an 8U-high 19~inch-wide \makemodel{CAEN}{
   \label{fig:eq_high_voltage:chasis_front}
 \end{figure}
 
-The \textit{Power Supply Section} houses up to four \textit{power supply units}, which provide power to the whole system.  We use one optional power supply in addition to the primary power supply.  The \textit{Board Section} houses up to 16 Channel Boards.  We use two standard HV boards, which distribute high voltage to the experimental rig, however the system is capable of housing other types of boards, including low voltage and generic I/O boards.  (We do not use \make{CAEN} LV boards; for our needs they are cost prohibitive).
+The \textit{Power Supply Section} houses up to four \textit{power supply units}, which provide power to the whole system.  We use one optional power supply in addition to the primary power supply.  The \textit{Board Section} houses up to 16 Channel Boards.  We use two standard HV boards, which distribute high voltage to the experimental rig.  However, the system is capable of housing other types of boards, including low voltage and generic I/O boards.  (We do not use \make{CAEN} LV boards; for our needs they are cost prohibitive.)
 
 \begin{table}[htbp]\begin{center}
     \begin{tabular}{>{\ttfamily}l l l}
       \toprule
       \normalfont Model Number & Location & Description \\
       \midrule
-      SY 1527LC & Chasis & Modular power supply chasis \\
+      SY1527LC & Chasis & Modular power supply chasis \\
       A1531 & Front & Primary chasis power supply \\
       A1532 & Front & Auxillary chasis power supply \\
       A1833D & Rear & Positive high voltage supply \\
@@ -34,9 +34,9 @@ The \textit{Power Supply Section} houses up to four \textit{power supply units},
     \label{tab:eq_high_voltage:parts}
 \end{center}\end{table}
 
-The system may be controlled either locally or remotely.  A small 7.7~in color LCD and a standard PS/2 keyboard are attached to the system for local control.  The system can be remotely controlled by RS232 (serial) or ethernet.  Over ethernet, the system can be logged into via telnet.  \make{CAEN} has also developed a C language library (CAEN HV Wrapper) for remotely monitoring and controlling system paramters over TCP/IP.  (Currently, remote control is not set up.)
+The system may be controlled either locally or remotely.  A small 7.7~inch color LCD and a standard PS/2 keyboard are attached to the system for local control.  The system can be remotely controlled over RS232 (serial) or ethernet.  Over ethernet, the system can be logged into via telnet.  \make{CAEN} has also developed a C language library (CAEN HV Wrapper) for remotely monitoring and controlling system parameters over TCP/IP.  (Currently, remote control is not set up.)
 
-A key on the primary power supply (front bottom right module) may be set to Off, Local, or Remote.  Off completely powers off the rig, and immediately kills any voltage supply channels without ramp-down.  Local powers on the system and provides local control via the LCD and keyboard.  Remote sets the system to allow a remote power-on using NIM, RS232, or ethernet.
+A key on the primary power supply (front, bottom-right module) may be set to \textit{Off}, \textit{Local}, or \textit{Remote}.  \textit{Off} completely powers down the rig, and immediately kills any voltage supply channels without ramping down the voltage.  \textit{Local} powers on the system and provides local control via the LCD and keyboard.  \textit{Remote} sets the system to allow a remote power-on using NIM, RS232, or ethernet.
 
 \begin{pleasedonot} power down the system by turning the key on the primary power supply without first initiating a software-controlled ramp-down.\end{pleasedonot}
 
@@ -45,9 +45,9 @@ A key on the primary power supply (front bottom right module) may be set to Off,
 \noindent
 For detailed information on the SY1527 system see the \href{Manuals/CAEN sy1527usermanual_rev15}{CAEN SY1527 User Manual}.
 
-At present, only the positive HV channel board is used to supply +800~V and +600~V to the five VPT anodes and dynodes, respectively.  These ten cables run across the floor to the magnet, and connect to the rig.
+At present, only the positive HV channel board is used to supply +800\,V and +600\,V to the five VPT anodes and dynodes, respectively.  These ten cables run across the floor to the magnet and connect to the rig.
 
-For further operating instructions, see section \ref{sec:op_high_voltage}.
+For further operating instructions, see \secnameref{sec:op_high_voltage}.
 
 %%% Local Variables: 
 %%% mode: latex

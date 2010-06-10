@@ -5,11 +5,11 @@
 \begin{figure}[htbp]
   \centering
   \pgfimage[interpolate=true,height=.5\textwidth]{figures/labview_hostmainvi}
-  \caption{LabVIEW block diagram of \texttt{Host - Main.vi}}
+  \caption{LabVIEW Block Diagram of \texttt{Host - Main.vi}}
   \label{fig:eq_labview:hostmainvi}
 \end{figure}
 
-LabVIEW is a graphical programming environment, used for developing programs called virtual instruments, or VIs, which imitate physical instruments.  LabVIEW uses a visual programming language called ``G'' for building virtual instruments.  ``G'' is a data-flow driven language, as opposed to a procedural or functional language.  Execution in LabVIEW is determined by the availability of data to the components inside a VI.  As such, LabVIEW's programs are inherently parallel.  
+LabVIEW is a graphical programming environment used for developing programs called virtual instruments, or \glspl{VI}, which imitate physical instruments.  LabVIEW uses a visual programming language called ``G'' for building virtual instruments.  ``G'' is a data-flow driven language, as opposed to a procedural like C or functional language like LISP or Haskell.  \FIXME (rephrase) In LabVIEW program execution is determined by the availability of data to the components inside a VI.  As such, LabVIEW's programs are inherently parallel, meaning that different parts of the program can run simultaneously.
 
 To get started with LabVIEW right away, read the manual \href{Manuals/LV_Getting_Started}{Getting Started with LabVIEW}.  This manual is also available from within the LabVIEW~2009 ``Getting Started'' dialog when the application is launched, in the right-hand pane under ``Help.''
 
@@ -20,31 +20,31 @@ The remainder of this section is a conceptual crash-course in LabVIEW.  For hand
 \subsection{Block Diagram and Front Panel}
 \label{sec:eq_labview:block_diagram}
 
-A virtual instrument (VI) is a program in LabVIEW.  A VI is a visual programming interface.  Every VI has a \textit{front panel}, which is a visual representation of its inputs and outputs, and a \textit{block diagram} which is a schematic of how to process its inputs and to produce its outputs.  The actual programming of a VI takes place on the block diagram.  However, you generally start creating the VI from the front panel, much like how you generally start writing a function with its interface or signature.
+A Virtual Instrument (VI) is a program in LabVIEW for which LabVIEW provides a visual programming interface.  Every VI has a \textit{front panel}, which is a visual representation of its inputs and outputs, and a \textit{block diagram}, which is a functional diagram of how to process its inputs and to produce its outputs.  The actual programming of a VI takes place in the block diagram.  However, you generally start creating the VI from the front panel, much like how you generally start writing a function with its interface or signature.
 
 A VI may be made of atomic logic units, like numbers, arithmetic, and control structures like loops and conditional branches.  It will contain any widgets you created on the front panel.  It may also contain any number of additional VIs.  VIs referenced within another VI are called ``sub-VIs,'' for the sake of discussion, but are otherwise the same as any other VI.
 
-\begin{figure}[hb]
+\begin{figure}[htbp]
   \centering
   \pgfimage[interpolate=true]{figures/labview_showicon} \quad
   \pgfimage[interpolate=true]{figures/labview_showconnection}
-  \caption{LabVIEW (default) Icon and Connection panels}
+  \caption{LabVIEW (default) Icon and Connection Panels}
   \label{fig:eq_labview:block_diagram:icon}
 \end{figure}
-From the front panel, a small icon is visible in the upper right-hand corner of the window.  This is how the VI appears when placed in another VI.  If you right-click this icon from the front panel (only) and select ``Show Connector'' and then a component on the front panel, you'll reveal connection pins that you can assign to front panel components by clicking the pin and then a front panel component.  If you use this VI as a sub-VI, you'll be able to programatically fill front panel inputs and read front panel outputs using the pin connections.
+From the front panel, a small icon is visible in the upper right-hand corner of the window.  This is how the VI appears when placed in another VI.  If you right-click this icon from the front panel (only) and select ``Show Connector'' and then a component on the front panel, you'll reveal connection pins that you can assign to front panel components by clicking the pin and then a front panel component.  If you use this VI as a sub-VI, you'll be able to fill in front panel inputs and read front panel outputs from another VI by using the pin connections.
 
-The block diagram will automatically be populated with the required components for the front panel and the pin connections you've designated from the front panel.  Connections between block diagram components can be made by clicking on the small pin-out location you wish to start from, and the small pin-in location on the destination.  A wire will be drawn from the source to the destination.  The style (color, thickness, pattern) will indicate its type.  LabVIEW will only allow you to complete connections between compatible types, but it will automatically insert conversions components for you, if possible.  New components may be dragged onto the block diagram from the ``Controls'' palette.
+The block diagram will automatically be populated with the required components for the front panel and the pin connections you've designated from the front panel.  Connections between block diagram components can be made by clicking on the small pin-out location you wish to start from and the small pin-in location on the destination.  A wire will be drawn from the source to the destination.  The style (color, thickness, pattern) will indicate its type.  LabVIEW will only allow you to complete connections between compatible types, but it will automatically insert conversion components for you, if possible.  New components may be dragged onto the block diagram from the ``Controls'' palette.
 
 The exact behavior produced by a left-click varies with the click's distance from an element.  For instance, clicking adjacent to a wire splices a branching connection into the wire, while clicking exactly on the wire allows you to select the wire itself.  The cursor will change to help you determine what will happen.
 
-\begin{figure}
+\begin{figure}[htbp]
   \centering
   \pgfimage[interpolate=true]{figures/labview_buttons_arrange}
-  \caption{LabVIEW Arrangment Buttons}
+  \caption{LabVIEW Arrangement Buttons}
   \label{fig:eq_labview:block_diagram:arrange}
 \end{figure}
 
-Because editting with the mouse can be a bit tedious, LabVIEW has a number of tools to automate a lot of large-scale housekeeping on block diagrams.  Under the \menu{Edit} menu, you can automatically \menu{Remove Broken Wires} and \menu{Clean Up Diagram}.  In the toolbar of the block diagram, you'll find menus to align, distribute, group/layer, and clean up selected components.
+Because editing with the mouse can be a bit tedious, LabVIEW has a number of tools to automate a lot of large-scale housekeeping on block diagrams.  Under the \menu{Edit} menu, you can automatically \menu{Remove Broken Wires} and \menu{Clean Up Diagram}.  In the toolbar of the block diagram, you'll find menus to align, distribute, group/layer, and clean up selected components.
 
 \subsection{Projects and VIs}
 \label{sec:eq_labview:projects_vis}
@@ -56,9 +56,9 @@ Because editting with the mouse can be a bit tedious, LabVIEW has a number of to
   \begin{flushright}\dashem Definition of \textit{project} from \textit{Getting Started with LabVIEW}\end{flushright}
 \end{quote}
 
-A \textit{project} in LabVIEW is a somewhat informal collection of files which can aggregate dependencies and help build and deploy files to targets.  A project is not even necessary for most tasks in LabVIEW, and VIs can be designed and run without creating a project.  This is a little different from a lot of development suites, which use projects to define the development environment.  (VIs run in the proprietary LabVIEW runtime environment, which handles things like execution, compilation, and dependency resolution.)  
+A \textit{project} in LabVIEW is a somewhat informal collection of files which can aggregate dependencies and help build and deploy files to targets.  A project is not even necessary for most tasks in LabVIEW and VIs can be designed and run without creating a project.  This is a little different from a lot of development suites, which use projects to define the development environment.  (VIs run in the proprietary LabVIEW runtime environment, which handles things like execution, compilation, and dependency resolution.)  
 
-You need to use a project if you need to compile and deploy a file to a target, such as an FPGA or some other statically programmed instrument.  Otherwise, projects have little to do with the programming and running of VIs.
+You need to use a project if you need to build and deploy a file to a target, such as an FPGA or some other statically programmed instrument.  Other than that, projects have little to do with the programming and running of VIs.
 
 
 \subsection{Documentation}
@@ -68,7 +68,7 @@ There are a number of useful sources of documentation for LabVIEW.
 
 One of the most useful tools is the \menu{Context Help}, found under \menu{Help \menusep Show Context Help}.  This will reveal a palette window that will give you information about whatever component you hover the mouse over.  For instance, when hovering over a wire it will tell you the data type the wire caries.  If you hover over a component on the block diagram, it will tell you what that component does, what its connections are, and which are optional.  You can also get detailed help on anything you can get context help on by clicking the question mark on the lower edge of the context help window.  (Select the component to keep the context help fixed on it.)
 
-Usually the best way to find out how to do something new is to find an example.  The example search engine can be found in LabVIEW from the menu by navigating to \menu{Help \menusep Find Examples\ldots}.  One of the directories listed under ``Browse'' is called ``Fundamentals,'' which will show you how to deal with the basics, such as basic data types, control structures, and file I/O.  Going through most of the examples in this directory will help you become familiar with the visual vocabulary of LabVIEW.
+Usually the best way to find out how to do something new is to find an example.  The example search engine can be found in LabVIEW by navigating to \menu{Help \menusep Find Examples\ldots}.  One of the directories listed under ``Browse'' tab is called ``Fundamentals,'' which will show you how to deal with the basics, such as basic data types, control structures, and file I/O.  Going through most of the examples in this directory will help you become familiar with the visual vocabulary of LabVIEW.
 
 The \href{http://forums.ni.com/ni/}{official National Instruments forums} are also a useful source of information.
 

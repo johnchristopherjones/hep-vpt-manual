@@ -8,6 +8,10 @@
 # Always track this file
 !.gitignore
 
+# Ignore Emacs files
+.#*
+#*#
+
 # Ignore regular mess from TeX/LaTeX
 *.aux
 *.log

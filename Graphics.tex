@@ -1,34 +1,38 @@
 \pgfmathparse{0.2ex*1em/1ex}
 \tikzset{pxislot/.style={line width=\pgfmathresult, baseline=0.34em/2}}
 
-\newcommand{\pxislotone}{\noindent
-  \beginpgfgraphicnamed{Graphics-pxislot1}
-  \begin{tikzpicture}[pxislot]
-    \draw (0,0) -- (0.5em,0.866em) -- (1em,0) -- (0,0) -- cycle;
-    \pgfusepath{use as bounding box}
-    \node[scale=0.8] at (0.5em,0.34em) {\texttt{1}};
-  \end{tikzpicture}
-  \endpgfgraphicnamed
-}
+\newcommand{\pxislotone}{\tikz[baseline=(n.base)]\draw[rotate=180] (0,0)--(60:1.4em)--(120:1.4em)--cycle node (n) at (0,.707em) {\tiny 1};}
+\newcommand{\pxislottwo}{\tikz[baseline=(n.base),scale=.75]\draw[rotate=45] (0,0) circle (.6em) (-.6em,-.6em) rectangle (.6em,.6em) node (n) at (0,0) {\tiny 2};}
+\newcommand{\pxislotn}[1]{\tikz[baseline=(n.base)]\draw (0,0) circle (.6em) node (n) {\tiny #1};}
 
-\newcommand{\pxislottwo}{\noindent
-  \beginpgfgraphicnamed{Graphics-pxislot2}
-  \begin{tikzpicture}[pxislot]
-    \draw (0.5em,0.5em) circle (0.355em);
-    \draw (0,0.5em) -- (0.5em,1em) -- (1em,0.5em) -- (0.5em,0) -- cycle;
-    \node[scale=0.8] at (0.5em,0.5em) {\texttt{2}};
-  \end{tikzpicture}
-  \endpgfgraphicnamed
-}
+% \newcommand{\pxislotone}{\noindent
+%   \beginpgfgraphicnamed{Graphics-pxislot1}
+%   \begin{tikzpicture}[pxislot]
+%     \draw (0,0) -- (0.5em,0.866em) -- (1em,0) -- (0,0) -- cycle;
+%     \pgfusepath{use as bounding box}
+%     \node[scale=0.8] at (0.5em,0.34em) {\texttt{1}};
+%   \end{tikzpicture}
+%   \endpgfgraphicnamed
+% }
 
-\newcommand{\pxislotn}[1]{\noindent
-  \beginpgfgraphicnamed{Graphics-pxislot#1}
-  \begin{tikzpicture}[pxislot]
-    \draw (0.5em,0.5em) circle (0.5em);
-    \node[scale=0.8] at (0.5em,0.5em) {\texttt{#1}};
-  \end{tikzpicture}
-  \endpgfgraphicnamed
-}
+% \newcommand{\pxislottwo}{\noindent
+%   \beginpgfgraphicnamed{Graphics-pxislot2}
+%   \begin{tikzpicture}[pxislot]
+%     \draw (0.5em,0.5em) circle (0.355em);
+%     \draw (0,0.5em) -- (0.5em,1em) -- (1em,0.5em) -- (0.5em,0) -- cycle;
+%     \node[scale=0.8] at (0.5em,0.5em) {\texttt{2}};
+%   \end{tikzpicture}
+%   \endpgfgraphicnamed
+% }
+
+% \newcommand{\pxislotn}[1]{\noindent
+%   \beginpgfgraphicnamed{Graphics-pxislot#1}
+%   \begin{tikzpicture}[pxislot]
+%     \draw (0.5em,0.5em) circle (0.5em);
+%     \node[scale=0.8] at (0.5em,0.5em) {\texttt{#1}};
+%   \end{tikzpicture}
+%   \endpgfgraphicnamed
+% }
 
 % \pxislotone
 % \pxislottwo

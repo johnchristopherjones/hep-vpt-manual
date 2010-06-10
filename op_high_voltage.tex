@@ -1,13 +1,12 @@
-
-\section{High Voltage Supply}
+\chapter{High Voltage Supply}
 \label{sec:op_high_voltage}
 
 All high voltage supply directions are carried out with the small LCD display and keyboard attached to the large red \makemodel{CAEN Nuclear}{SY1527LC} rack-mounted system.
 
-\subsection{Verifying Cable Configuration}
+\section{Verifying Cable Configuration}
 \label{sec:op_high_voltage:verify_cables}
 
-Inspect the back of the high voltage unit.  The module inserted in the middle, marked ``12 CH POS'' near the bottom in blue, should bear ten cables in channels 0 through 9.  Verify the layout by reading the cable labels and comparing them with Table \ref{tab:high_voltage:group01} (p. \pageref{tab:high_voltage:group01}).
+Inspect the back of the high voltage unit.  The module inserted in the middle, marked ``12 CH POS'' near the bottom in blue, should have ten cables connected to channels 0 through 9.  Verify the layout by reading the cable labels and comparing them with Table \ref{tab:high_voltage:group01} (p. \pageref{tab:high_voltage:group01}).
 
 \begin{table}[htbp]\begin{center}
   \caption{High Voltage Group 01}
@@ -31,14 +30,14 @@ Inspect the back of the high voltage unit.  The module inserted in the middle, m
 \end{center}\end{table}
 
 
-Inspect the rig inside the superconducting solenoidal magnet.  When viewed from the rear, which faces the exterior door, the high voltage cables enter from the front (opposite) side and are attached to the VPT mounting rig on the left-hand side.  Visually verify that the top five cables facing you are labeled ``HV Anode 1'' through ``HV Anode 5'' from top to bottom.  Verify from the front side that the top five cables facing you on the right-hand side are labeled ``HV Dynode 1'' through ``HV Dynode 5''.
+Inspect the rig inside the superconducting solenoidal magnet.  When viewed from the rear, which faces the exterior door, the high voltage cables enter from the front (opposite) side and are attached to the VPT mounting rig on the left-hand side.  Visually verify that the top five cables facing you are labeled ``HV Anode 1'' through ``HV Anode 5'' from top to bottom.  Verify from the front side that the top five cables facing you on the right-hand side are labeled ``HV Dynode 1'' through ``HV Dynode 5.''
 
-\subsection{Verifying the Voltage Settings}
+\section{Verifying the Voltage Settings}
 \label{sec:op_high_voltage:verify_voltage}
 
 From the front of the rack, examine the color LCD monitor below the high voltage unit.  Verify that the voltage settings correspond to Table \ref{tab:high_voltage:group01} (p. \pageref{tab:high_voltage:group01}).
 
-\subsection{Killing the High Voltage}
+\section{Killing the High Voltage}
 \label{sec:op_high_voltage:kill}
 
 \begin{avoid} killing the high voltage unless it's worth the risk of damaging the equipment.\end{avoid}
@@ -47,50 +46,50 @@ From the front of the rack, examine the color LCD monitor below the high voltage
 \item Turn the key to the \textit{off} position.
 \end{enumerate}
 
-\begin{pleasedo} ramp the voltage down before shutting the system down whenever possible.  See \ref{sec:op_high_voltage:rampdown} for ramp-down instructions.\end{pleasedo}
+\begin{pleasedo} ramp the voltage down before shutting the system down whenever possible.  See \secnameref{sec:op_high_voltage:rampdown} for ramp-down instructions.\end{pleasedo}
 
-\subsection{Ramping Down the High Voltage}
+\section{Ramping Down the High Voltage}
 \label{sec:op_high_voltage:rampdown}
 
 \FIXME{} Placeholder until detailed walkthrough can be practiced
 
 \begin{enumerate}
-\item Toggle group mode from the Groups menu
+\item Toggle group mode from the Groups menu.
 \item Turn off any channel; while group mode is enabled all grouped channels will ramp down together.
 \end{enumerate}
 
-\subsection{Ramping Up the High Voltage}
+\section{Ramping Up the High Voltage}
 \label{sec:op_high_voltage:rampup}
 
 \FIXME{} Placeholder until detailed walkthrough can be practiced
 
 \begin{enumerate}
-\item Toggle group mode from the Groups menu
-\item Turn on any channel; while group mode is enabled all grouped channels will ramp down together.
+\item Toggle group mode from the Groups menu.
+\item Turn on any channel; while group mode is enabled all grouped channels will ramp up together.
 \end{enumerate}
 
 
-\subsection{Turning Off the High Voltage System}
+\section{Turning Off the High Voltage System}
 \label{sec:op_high_voltage:turnoff}
 
-The system rarely needs to be entirely turned off.  Channel boards and power supplies may be hot swapped, and channels only need to be ramped down before disconnecting cables.  However, there is an additional safety factor in powering the entire system down before tampering with high voltage.
+The system rarely needs to be entirely turned off.  Channel boards and power supplies may be hot swapped and channels only need to be ramped down before disconnecting cables.  However, there is an additional safety factor in powering the entire system down before tampering with high voltage.
 
 \begin{enumerate}
-\item Ramp down the voltage (\seeref{sec:op_high_voltage:rampdown}.)
+\item Ramp down the voltage (\seeref{sec:op_high_voltage:rampdown}).
 \item Turn the key to the \textit{off} position.
 \end{enumerate}
 
-\subsection{Turning On the High Voltage System}
+\section{Turning On the High Voltage System}
 \label{sec:op_high_voltage:turnoff}
 
 To turn the high voltage on from a power-off state:
 \begin{enumerate}
 \item Turn the key to the \textit{local} position.
-\item Ramp up the voltage (\seeref{sec:op_high_voltage:rampup}.)
+\item Ramp up the voltage (\seeref{sec:op_high_voltage:rampup}).
 \end{enumerate}
 
 \begin{note}
-  In the future, the key may need to be turned to \emph{remote}.  Check with the experiment maintainer if there are cables connected to the front panel.
+  In the future, the key may need to be turned to \emph{remote}.  Check with the experiment maintainer if there are additional cables connected to the front panel.
 \end{note}
 
 

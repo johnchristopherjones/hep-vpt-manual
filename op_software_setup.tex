@@ -1,25 +1,25 @@
-\section{Getting Started}
+\chapter{Getting Started}
 \label{sec:op_start}
 
-\subsection{Install LabVIEW 2009}
-You will need access to \gls{LabVIEW} to start and stop experients, to view data, and to export data.
+\section{Installing LabVIEW 2009}
+You will need access to \gls{LabVIEW} to start and stop experiments, to view data, and to export data.
 
-As of Summer 2010, you'll need \gls{LabVIEW} 2009.  The National Instruments site-licensed installation discs are located in the HEP building, in a small square black CD-sized zipper pouch with a blue spine.  The pouch's spine is labeled \textit{National Instruments Academic Site License 2009: Software for Classrooms, Labs \& Research}.
+As of Summer 2010, you'll need \gls{LabVIEW} 2009.  The National Instruments site-licensed installation discs are located in the HEP building in a small square black CD-sized zipper pouch with a blue spine.  The pouch's spine is labeled \textit{National Instruments Academic Site License 2009: Software for Classrooms, Labs \& Research}.
 
-\subsubsection{Mac}
+\subsection{Mac}
 \label{sec:LabViewMacLinux}
 
-Locate the white DVD labeled ``NI LabVIEW 2009.''  This disc also bears the label ``Third Quarter 2009'' on the left-hand side.  Insert the disc and install the package titled LabVIEWPor2009.mpkg.  You're done.
+Locate the white DVD labeled ``NI LabVIEW 2009.''  This disc also bears the label ``Third Quarter 2009'' on the left-hand side.  Insert the disc and install the package titled LabVIEWPro2009.mpkg.  You're done.
 
-\subsection{Installing the \glsentryplural{VPT VI}}
-%\label{sec:op_start:vptvi}
+\section{Installing the \glsentryplural{VPT VI}}
+\label{sec:op_start:vptvi}
 
 Copy the most recent \glspl{VPT VI} from the ReadyNAS to a convenient location.  Their remote location is:
 \begin{verbatim}
 ftp://hep-diskarray.physics.virginia.edu/teststand/VPT Stability Scanner/v3.0 - 5 VPTs
 \end{verbatim} \noindent
 
-All data is stored on the ReadyNAS (see \ref{sec:eq_readynas}), and accessible via FTP.  Open an FTP connection to
+All data is stored on the ReadyNAS (see \ref{sec:eq_readynas}) and accessible via FTP.  Open an FTP connection to
 \begin{verbatim}
 ftp://hep-diskarray.physics.virginia.edu/
 \end{verbatim} \noindent
@@ -29,9 +29,9 @@ The ``/teststand/'' directory contains all of the data which is intended for use
 /teststand/VPT Stability Scanner/v3.0 - 5 VPTs
 \end{verbatim} \noindent
 
-If you're unfamiliar with FTP, you may use any of the following methods.
+If you're unfamiliar with FTP, you may use any of the following methods:
 
-\subsubsection{Method 1: Using Finder}
+\subsection{Method 1: Using Finder}
 \label{sec:op_start:vptvi:finder}
 
 First, connect to the server.  To do this for the first time:
@@ -54,14 +54,14 @@ If you've added the server to your favorites and later ``eject'' the server, you
 
 Opening an FTP site in Finder works exactly like any regular folder in Finder.  If you like, you can switch the view to ``Browser Mode'' by hitting the clear oblong oval in the far upper right hand corner of the window.
 
-Navigate to \menu{teststand \menusep VPT Stability Scanner}, and drag \textsf{v3.0 - 5 VPTs} to a convenient location.
+Navigate to \menu{teststand \menusep VPT Stability Scanner} and drag \textsf{v3.0 - 5 VPTs} to a convenient location.
 
 \textbf{Note:} Do not attempt to view data on the remotely mounted server.  Copy the VIs and the data to your local hard drive before working on them.  It was discovered through trial and error that it's best to view the data on a machine separate from the one that is taking data.  Working non-locally with data or VIs while an experiment is running may cause problems for you or the experiment.
 
-\subsubsection{Method 2: Using \texttt{wget}}
+\subsection{Method 2: Using \texttt{wget}}
 \label{sec:op_start:vptvi:wget}
 
-If you have a unix-like operating system (Linux, Mac OS X), or use Cygwin on Windows, and are comfortable on the command line, \texttt{wget} is an excellent tool to use.  This method duplicates the directory structure of hep-diskarray, which can be very convenient for maintaining consistencey between your local copy and the \gls{PXI Crate}.  Open a terminal and \texttt{cd} to directory where you'd like to store your mirrored directories.
+If you have a unix-like operating system (Linux, Mac OS X), or use Cygwin on Windows, and are comfortable on the command line, \texttt{wget} is an excellent tool to use.  This method duplicates the directory structure of hep-diskarray, which can be very convenient for maintaining consistency between your local copy and the \gls{PXI Crate}.  Open a terminal and \texttt{cd} to a directory where you'd like to store your mirrored directories.
 
 To mirror only the latest running \gls{VPT VI} software, run:
 \begin{verbatim}
@@ -82,16 +82,16 @@ hep-diskarray.physics.virginia.edu/
         *.vi
 \end{verbatim}
 
-If you don't want to copy the directory structure, and just want the VIs themselves, \texttt{cd} to your own directory and run a command like the following, to copy the desired files directly without the above directory structure.
+If you don't want to copy the directory structure and just want the VIs themselves, \texttt{cd} to your own directory and run a command like the following to copy the desired files directly without the directory structure above.
 \begin{verbatim}
 wget "ftp://teststand:labview@hep-diskarray.physics.virginia.edu\
 /teststand/VPT Stability Scanner/v3.0 - 5 VPTs/*.vi"
 \end{verbatim}
 
-\subsection{Getting the latest data}
+\section{Getting the Latest Data}
 \label{sec:op_start:data}
 
-The location of the latest data is always subject to change.  All data is usually located in a \texttt{/data/} directory under the particular experiment's main directory on the RNAS, such as \texttt{/teststand/VPT Stability Scanner/}.  Check with the current experiment maintainer for the latest location.  For demonstration purposes, we'll assume the latest data is locate on the RNAS in the following files:\\
+The location of the latest data is always subject to change.  All data is usually located in a \texttt{/data/} directory under the particular experiment's main directory on the RNAS, such as \texttt{/teststand/VPT Stability Scanner/}.  Check with the current experiment maintainer for the latest location.  For demonstration purposes, we'll assume the latest data is located on the RNAS in the following files:\\
 \begin{verbatim}
 /teststand/VPT Stability Scanner/data/Taken with v3.0/Raw Data/
     VPT2181.dat
@@ -103,10 +103,10 @@ The location of the latest data is always subject to change.  All data is usuall
 
 
 
-\subsubsection{Method 1: Using Finder}
+\subsection{Method 1: Using Finder}
 \label{sec:op_start:data:finder}
 
-If \textsf{hep-diskarray.physics.virginia.edu} is not already mounted, mount it.  If you're not sure if it's mounted
+If \textsf{hep-diskarray.physics.virginia.edu} is not already mounted, mount it.  If you're not sure if it's mounted:
 \begin{enumerate}
 \item Open \textsf{Finder} from the Dock.
 \item Press \keys{\shiftkey \commandkey C}
@@ -116,12 +116,12 @@ If \textsf{hep-diskarray.physics.virginia.edu} is not already mounted, mount it.
 Now you're ready to locate and copy the data.
 \begin{enumerate}
 \item Navigate to \menu{hep-diskarray.physics.virginia.edu \menusep teststand \menusep VPT Stability Scanner \menusep data \menusep Taken with v3.0 \menusep Raw Data}
-\item Select \textsf{VPT2181.data} through \textsf{VPT2185.dat}.
+\item Select \textsf{VPT2181.dat} through \textsf{VPT2185.dat}.
 \item Copy them to a convenient location on your hard drive.
 \end{enumerate}
 
 
-\subsubsection{Method 2: Using \texttt{wget}}
+\subsection{Method 2: Using \texttt{wget}}
 \label{sec:op_start:data:wget}
 \textit{Note: The \texttt{bash} shell is assumed.}
 

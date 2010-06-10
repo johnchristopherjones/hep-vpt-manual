@@ -2,3 +2,82 @@
 \chapter{Low Voltage Supply}
 \label{chap:eq_low_voltage}
 
+Most of the pieces of equipment in the rig have low voltage and current requirements.  For our external power supply, we use two \makemodel{BK Precision}{9130} Triple Output Programmable DC Power Supplies.
+
+\begin{figure}[htbp]
+  \centering
+  {\tiny Taken from \href{Manuals/9130_manual.pdf}{BK Precision 9130 Manual}. \\}
+  \pgfimage[interpolate=true,height=3in]{figures/bkprecision_9130}
+  \caption{BK Precision 9130 Front View}
+  \label{fig:eq_low_voltage:bkprecision9130}
+\end{figure}
+
+The \makemodel{BK Precision}{9130} Triple Output Programmable DC Power Supply has three independent outputs  providing 0\dashen30\,V \& 0\dashen3\,A on two channels, and 0\dashen5\,V \& 0\dashen3\,A on a third.  It can be remotely controlled over USB or RS232.  It is also rack mountable, at 2\,U$\times$½\,U.
+
+\begin{table}[htbp]
+  \centering
+  \begin{tabular}{@{} c c r@{.}l@{\,V\quad} r@{.}l@{\,A\quad} p{.5\textwidth}}
+    \toprule %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    {Supply} & {Channel} & \multicolumn{2}{c}{Voltage} & \multicolumn{2}{c}{Current} & Distributed to\ldots \\
+    \midrule %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    1&1 & 12&0 & 0&665 & LCD Monitor Power\\
+    1&2 & 12&0 & 0&082 & LED Pulser Board Power,
+                         Humiditer Power\\
+    1&3 &  5&0 & 0&045 & LED Pulser Board Voltage Bias,
+                         Trigger's Pulse Generator Chip Power\\
+    2&1 & 10&0 & 0&421 & \multirow{3}{.5\textwidth}{Supply 2 is wired in series to
+    provide a $\pm$5~V supply relative to the ground shared by the Stephenson Amp and FPGA,
+    rather than a floating ground.}\\
+    2&2 &  0&0 & \multicolumn{2}{l}{〈\texttt{OFF}〉} 
+                       & \\
+    2&3 & \multicolumn{2}{l}{\texttt{Series}} & \multicolumn{2}{l}{\texttt{CH1+3}}
+                       & \\
+    \bottomrule %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \end{tabular}
+  \caption{DC Power Supply Channel Configuration}
+  \label{tab:eq_low_voltage:external_settings}
+\end{table}
+
+For detailed information on the external power supplies, see the \href{Manuals/9130_manual.pdf}{BK Precision 9130 Manual}.
+
+Table \ref{tab:eq_low_voltage:external_settings} lists the voltage each channel is set to, and what it is currently connected to.  Table \ref{tab:eq_low_voltage:external_cables} lists the cables which require low voltage supplies and where they're currently connected.
+
+\begin{table}[htbp]
+  \centering
+  \begin{tabular}{@{} l r @{ } l r l @{}}
+    \toprule %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    Cable Name&\multicolumn{2}{c}{Cable Pair}          & Voltage    & Supply\\
+    \midrule %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \multirow{4}{*}{LED Voltage}
+              & \textcolor{blue}{blue}     & LED Bias  & $\pm5$\,V  & Supply 1, Ch 3\\
+              & \textcolor{green}{green}   & LED Bias  & $\pm5$\,V  & Supply 1, Ch 3\\
+              & \textcolor{orange}{orange} & LED Bias  & $\pm5$\,V  & Supply 1, Ch 3\\
+              & \textcolor{brown}{brown}   & LED Power & $\pm12$\,V & Supply 1, Ch 2\\
+    \midrule %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \multicolumn{2}{@{}l}{Stephenson Amp} & \multicolumn{2}{r}{$\pm5$\,V to earth ground}
+                                       & Supply 2\\
+    \midrule %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \multirow{2}{*}{Local Power}
+              & \textcolor{blue}{blue}     & Trigger Pulse Gen 
+                                                      & $\pm5$\,V  & Supply 1, Ch 3\\
+              & \textcolor{brown}{brown}   & Not used & $\pm12$\,V & Supply 1, Ch 2 \\
+    \midrule %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    Humiditer & \textcolor{green}{green}   & Power    & $\pm12$\,V & Supply 1, Ch 2\\
+    \midrule %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    LCD Panel & \textcolor{red}{red} \& black
+                                           & Power & $\pm12$\,V & Supply 1, Ch 1\\
+    \bottomrule %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \end{tabular}
+  \caption{DC Voltage Requirements}
+  \label{tab:eq_low_voltage:external_cables}
+\end{table}
+
+The FPGA is capable of meeting the voltage and current requirements for the LED boards, and directly connecting them would also allow the LED bias to be controlled directly by the FPGA.  That would permit us to control the photocurrent automatically.  They were removed from the FPGA while tracking down a source of signal noise, and may be safely re-attached to the FPGA at a later date.
+
+The ``Trigger Pulse Generator Chip'' is a pair of a \model{74LS241N} and \model{74LS241PC} line drivers, chips designed to able to drive signals over BNC cables.  The trigger signals run from the FPGA to the generator chips and then on to the LED boards themselves.  The FPGA isn't capable of driving the BNC cables directly.
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "Manual"
+%%% End: 

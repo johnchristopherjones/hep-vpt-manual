@@ -1,4 +1,4 @@
-% To use glossary terms:
+%  To use glossary terms:
 % \gls{label} for singular
 % \glspl{label} for plural
 % \Gls{label} for capitalized
@@ -22,6 +22,7 @@
 \newacronym{PXI}{PXI}{\textbf{P}CI e\textbf{X}tensions for \textbf{I}strumentation}
 \newacronym{NI} {NI} {\textbf{N}ational \textbf{I}nstruments}
 \newacronym{LHC}{LHC}{Large Hadron Collider}
+\newacronym{VI} {VI} {\textbf{V}irtual \textbf{I}nstrument}
 
 
 \newglossaryentry{teststand}{
@@ -43,16 +44,16 @@
 
 \newglossaryentry{System Controller}{
   name={System Controller},
-  description={Generic term for device which is housed in slot one of a National Instruments PXI chasis.  This is almost always an \gls{Embedded Computer}.}}
+  description={Generic term for the device that is housed in slot \pxislotone of a National Instruments PXI chasis.  This is almost always an \gls{Embedded Computer}}}
 
 \newglossaryentry{Embedded Computer}{
   name={Embedded Computer},
-  description={A small form-factor general-purpose computer with some specialization for its particular embedded application.  In this case, an \texttt{NI PXI-8104} which controls the components of a PXI-bus chasis, and is specialized for running and monitoring experimental instruments.}}
+  description={A small form-factor, general-purpose computer with some specialization for its particular embedded application.  In this case it is an \texttt{NI PXI-8104}, which controls the components of a PXI-bus chasis, and is specialized for running and monitoring experimental instruments}}
 
 \newglossaryentry{FPGA}{
   name=FPGA,
   first={Field Programmable Gate Array (FPGA)},
-  description={\textbf{F}ield \textbf{P}rogrammable \textbf{G}ate \textbf{A}rray: A Reconfigurable I/O (RIO) device; essencially a programmable intergrated circuit (IC).  It can be programmed through LabVIEW (from the system controller only) to provide real-time signalling, triggering, or procesing.  See \ref{sec:eq_pxi:fpga}}}
+  description={\textbf{F}ield \textbf{P}rogrammable \textbf{G}ate \textbf{A}rray: A Reconfigurable I/O (RIO) device; essentially a programmable integrated circuit (IC).  It can be programmed through LabVIEW (from the system controller only) to provide real-time signalling, triggering, or processing.}}
 
 
 \newglossaryentry{ReadyNAS}{
@@ -75,11 +76,11 @@
 
 \newglossaryentry{DAQ}{
   name=DAQ,
-  description={An abbreviation for Data Acquisition, DAQ refers to the process of capturing digital representations of physical processes.  By definition DAQ involves (typically analog) sensors, circuitry to translate the analog signal into a digitizable form, and an ADC (Analog to Digital Converter).  Colloquially DAQ can also refer to the process of capturing those digital signals and recording them}}
+  description={An abbreviation for Data Acquisition, DAQ refers to the process of capturing digital representations of physical processes.  By definition DAQ, involves (typically analog) sensors, circuitry to translate the analog signal into a digitizable form, and an ADC (Analog to Digital Converter).  Colloquially, DAQ can also refer to the process of capturing those digital signals and recording them}}
 
 \newglossaryentry{VPT VI}{
   name=VPT VI,
-  description={Literally Vaccum Photo-triode Virtual Instruments; Refers to the HEP software written in LabVIEW for the National Instruments hardware.  Includes software and hardware logic}}
+  description={Literally Vacuum Photo-triode Virtual Instruments; Refers to the HEP software written in LabVIEW for the National Instruments hardware.  Includes software and hardware logic}}
 
 
 \newglossaryentry{superconducting solenoid}{
@@ -122,7 +123,7 @@
 
 \newglossaryentry{quench}{
   name=quench,
-  description={An abnormal termination of magnet operation, caused by part of the superconducting material entering the normal resistive state.  A quench has not yet occured under HEP supervision.  A quench should not damage the magnet itself, but it can induce kilo-volt spikes and arcing, and the rapid boil-off of cryogens can cause asphyxiation.}}
+  description={An abnormal termination of magnet operation, caused by part of the superconducting material entering the normal resistive state.  A quench has not yet occured under HEP supervision.  A quench should not damage the magnet itself, but it can induce kilo-volt spikes and arcing and the rapid boil-off of cryogens can cause asphyxiation}}
 
 %%% Local Variables: 
 %%% mode: latex
