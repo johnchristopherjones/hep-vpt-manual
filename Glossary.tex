@@ -14,41 +14,47 @@
 %   sort=<term to sort by if not ASCII>}
 
 
+\newglossaryentry{humiditer}{
+  name=humiditer,
+  description={A low-voltage instrument for measuring temperature and humidity.  One is mounted in the rig next to the VPTs to monitor temperature fluctuation.  }
+}
+
 
 \newglossaryentry{rig}{
   name=rig,
-  description={The aluminum bit mounted in/on the magnet}}
+  description={Aluminum mounting brace attached to the supersolenoidal magnet, housing the LED pulser boards, VPT mounting enclosure, and anode amplifier boards.}}
 
 \newacronym{PXI}{PXI}{\textbf{P}CI e\textbf{X}tensions for \textbf{I}strumentation}
 \newacronym{NI} {NI} {\textbf{N}ational \textbf{I}nstruments}
 \newacronym{LHC}{LHC}{Large Hadron Collider}
 \newacronym{VI} {VI} {\textbf{V}irtual \textbf{I}nstrument}
+\newacronym{VPT}{VPT}{\textbf{V}acuum \textbf{P}hoto-\textbf{T}riodes}
 
 
 \newglossaryentry{teststand}{
   name=teststand,
-  description={The magnet, mounting brackets, LED pulser boards, and anything else physically attached to the VPTs or the rig}}
+  description={The magnet, mounting brackets, LED pulser boards, and anything else physically attached to the VPTs or the rig.}}
 
 \newglossaryentry{LabVIEW}{
   name=LabVIEW,
-  description={}}
+  description={Software development environment created by \noun{National Instruments}' for building and deploying programs, called Virtual Instruments, written in the visual programming langauge \noun{G}.}}
 
 
 \newglossaryentry{PXI Crate}{
   name=PXI Crate,
-  description={The National Instruments crate and contents, including hardware modules and software to control the experiment and perform data acquisition (DAQ)}}
+  description={The National Instruments crate and contents, including hardware modules and software to control the experiment and perform data acquisition (DAQ).}}
 
 \newglossaryentry{break-out board}{
   name=break-out boards,
-  description={Break-out boards from the PXI crate which allow connections between the PXI crate and the rig}}
+  description={Break-out boards from the PXI crate which allow connections between the PXI crate and the rig.}}
 
 \newglossaryentry{System Controller}{
   name={System Controller},
-  description={Generic term for the device that is housed in slot \pxislotone of a National Instruments PXI chasis.  This is almost always an \gls{Embedded Computer}}}
+  description={Generic term for the device that is housed in slot \pxislotone\ of a National Instruments PXI chasis.  This is almost always an \gls{Embedded Computer}.}}
 
 \newglossaryentry{Embedded Computer}{
   name={Embedded Computer},
-  description={A small form-factor, general-purpose computer with some specialization for its particular embedded application.  In this case it is an \texttt{NI PXI-8104}, which controls the components of a PXI-bus chasis, and is specialized for running and monitoring experimental instruments}}
+  description={A small form-factor, general-purpose computer with some specialization for its particular embedded application.  In this case it is an \texttt{NI PXI-8104}, which controls the components of a PXI-bus chasis, and is specialized for running and monitoring experimental instruments.}}
 
 \newglossaryentry{FPGA}{
   name=FPGA,
@@ -63,24 +69,20 @@
 \newglossaryentry{RNAS}{
   name=RNAS,
   first={ReadyNAS (RNAS)},
-  description={ReadyNAS, a specific NAS product produced by Netgear.  RNAS is a specific independent hardware module located in the HEP Computer Room \FIXME}}
+  description={ReadyNAS, a specific NAS product produced by Netgear.  ``The RNAS'' is a specific independent hardware module located in the HEP Computer Room which hosts all the VPT teststand software and data.}}
 
 \newglossaryentry{NAS}{
   name=NAS,
-  description={An acronym for Network-Attached Storage, it refers to a computer file-system accessible by heterogenous clients.  ReadyNAS (RNAS) provides a NAS solution, which can be accessed by SMB (Windows File Sharing), FTP, and RSYNC clients}}
+  description={An acronym for Network-Attached Storage, it refers to a computer file-system accessible by heterogenous clients.  ReadyNAS (RNAS) provides a NAS solution, which can be accessed by SMB (Windows File Sharing), FTP, and RSYNC clients.}}
 
-
-\newglossaryentry{voltage supplies}{
-  name=voltage supplies,
-  description={Low and high voltage supplies}}
 
 \newglossaryentry{DAQ}{
   name=DAQ,
-  description={An abbreviation for Data Acquisition, DAQ refers to the process of capturing digital representations of physical processes.  By definition DAQ, involves (typically analog) sensors, circuitry to translate the analog signal into a digitizable form, and an ADC (Analog to Digital Converter).  Colloquially, DAQ can also refer to the process of capturing those digital signals and recording them}}
+  description={An abbreviation for Data Acquisition, DAQ refers to the process of capturing digital representations of physical processes.  By definition DAQ, involves (typically analog) sensors, circuitry to translate the analog signal into a digitizable form, and an ADC (Analog to Digital Converter).  Colloquially, DAQ can also refer to the process of capturing those digital signals and recording them.}}
 
 \newglossaryentry{VPT VI}{
   name=VPT VI,
-  description={Literally Vacuum Photo-triode Virtual Instruments; Refers to the HEP software written in LabVIEW for the National Instruments hardware.  Includes software and hardware logic}}
+  description={Literally Vacuum Photo-triode Virtual Instruments; Refers to the HEP software written in LabVIEW for the National Instruments hardware.  Includes software and hardware logic.}}
 
 
 \newglossaryentry{superconducting solenoid}{
@@ -89,16 +91,16 @@
 
 \newglossaryentry{SHVC}{
   name=SHVC,
-  description={An acronym for Safe High Voltage (SHV) Connector, it is a connector similar in appearance to a BNC connector, but designed to be safe carrying much higher voltages and currents than traditional BNC connectors.  Like BNC, the connectors are used on co-axial cables.  SHV connectors cannot be mated with low voltage BNC terminals, or vice versa.  SHV connectors are visually distinguishable from BNC connectors by their thick protruding insulator.  They are designed so that high voltage contact is broken before the grounding contact is, protecting the user from shock}}
+  description={An acronym for Safe High Voltage (SHV) Connector, it is a connector similar in appearance to a BNC connector, but designed to be safe carrying much higher voltages and currents than traditional BNC connectors.  Like BNC, the connectors are used on co-axial cables.  SHV connectors cannot be mated with low voltage BNC terminals, or vice versa.  SHV connectors are visually distinguishable from BNC connectors by their thick protruding insulator.  They are designed so that high voltage contact is broken before the grounding contact is, protecting the user from shock.}}
 
 
 \newglossaryentry{BNC}{
   name=BNC,
-  description={}}
+  description={A common type of RF connector for terminating coaxial cable.  Cables terminated at both ends by BNC connectors are colloquially called BNC cables.  BNC connectors are 50~$\Omega$ terminators.  BNC stands for Bayonet Neill-Concelman.}}
 
-\newglossaryentry{MOLEX}{
+\newglossaryentry{Molex}{
   name=MOLEX,
-  description={}}
+  description={Molex is a large supplier of electronic interconnects.  \textit{Molex connector} is a vernacular term for the two-piece interconnects manufactured by Molex.}}
 
 \newglossaryentry{attenuators}{
   name=attenuators,
@@ -111,19 +113,21 @@
 
 \newglossaryentry{LED board}{
   name=LED board,
-  description={}}
+  description={LED pulser board designed and built by Mike Arenton.  Receives electrical triggers from the PXI Crate and sends optical pulses to the VPTs and PIN diodes.}}
 
-\newglossaryentry{LED control}{
-  name=LED control,
-  description={}}
+% \newglossaryentry{LED control}{
+%   name=LED control,
+%   description={}}
 
 \newglossaryentry{HEP}{
   name=HEP,
-  description={An acronym for High-Energy Physics.  At UVA, HEP is a field of research with specific faculty.  Research in high energy physics is based in the High Energy Physics Building, located [blank].  Many of the faculty and graduate students working in high-energy physics, especially experimentalists, have offices in the HEP building}}
+  description={An acronym for High-Energy Physics.  At UVA, HEP is a field of research with specific faculty.  Research in high energy physics is based in the High Energy Physics Building, located [blank].  Many of the faculty and graduate students working in high-energy physics, especially experimentalists, have offices in the HEP building.}}
 
 \newglossaryentry{quench}{
   name=quench,
-  description={An abnormal termination of magnet operation, caused by part of the superconducting material entering the normal resistive state.  A quench has not yet occured under HEP supervision.  A quench should not damage the magnet itself, but it can induce kilo-volt spikes and arcing and the rapid boil-off of cryogens can cause asphyxiation}}
+  description={An abnormal termination of magnet operation, caused by part of the superconducting material entering the normal resistive state.  A quench has not yet occured under HEP supervision.  A quench should not damage the magnet itself, but it can induce kilo-volt spikes and arcing and the rapid boil-off of cryogens can cause asphyxiation.}}
+
+
 
 %%% Local Variables: 
 %%% mode: latex

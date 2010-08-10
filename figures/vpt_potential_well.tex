@@ -1,0 +1,13 @@
+  \begin{tikzpicture}[yscale=-1]
+    \draw[->] (0,26.5mm) -- (0,-5mm) node[left] {$U(x)$};
+    \draw[->] (0,26.5mm/2) -- (26.5mm*2,26.5mm/2) node[right] {$x$};
+    % \draw[very thin, color=gray, step=26.5mm/7]
+    %   (-1mm,-1mm) grid (26.5mm*2-1mm,26.5mm+1mm);
+
+    \node[anchor=west,rotate=-60] at (0,26.5mm) {Cathode};
+    \node[anchor=west,rotate=-60] at (26.5mm*1,26.5mm) {Anode};
+    \node[anchor=west,rotate=-60] at (26.5mm*2,26.5mm) {Dynode};
+
+    \draw[color=red]
+       (0,0) -- (26.5mm*1,26.5mm) -- (26.5mm*2,26.5mm*4/7);
+  \end{tikzpicture}

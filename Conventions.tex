@@ -33,6 +33,10 @@
 \newcommand{\makemodel}[2]{\make{#1} \model{#2}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Labelled style %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand*{\pxilabelled}[1]{\hspace\labelsep \normalfont\bfseries #1}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%% Common expressions %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand{\seeref}[1]{see \ref{#1}, p.{} \pageref{#1}}
 \newcommand{\secnameref}[1]{\S\ref{#1}~\nameref{#1}}
@@ -93,10 +97,12 @@
       \draw (3in,0)      node[anchor=west] {\HUGE \bfseries Operating Instructions};
       \draw (3in,-.5in)  node[anchor=west] {\HUGE for VPT Experiments};
       \draw (3in,-1in)   node[anchor=west] {\huge at UVa's HEP Laboratory};
-      \draw (3in,-2.25in)   node[anchor=west] {\itshape Written by};
+      \draw (3in,-2.25in)   node[anchor=west] {\itshape Original Author};
       \draw (3in,-2.5in) node[anchor=west] {\Large John Christopher Jones};
+      \draw (3in,-2.75in) node[anchor=west] {\Large Department of Physics};
+      \draw (3in,-3.0in) node[anchor=west] {\Large BA Physics 2010};
       \draw (3in,-3.5in) node[anchor=west] {\Large Summer 2010};
-      \draw (3in,  -5in) node[anchor=west,red] {\HUGE \bfseries [DRAFT]};
+      % \draw (3in,  -5in) node[anchor=west,red] {\HUGE \bfseries [DRAFT]};
     \end{scope}
   \end{tikzpicture}
   \end{figure}

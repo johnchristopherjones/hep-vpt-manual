@@ -1,7 +1,7 @@
 \section{\glsentryfirst{RNAS}}
 \label{sec:eq_readynas}
 
-The \gls{RNAS} is a ready-made NAS solution.  NAS is an acronym for \textit{Network-Attached Storage}, a file-level (as opposed to block-level) remote storage system.  The \href{http://www.netgear.com/Products/Storage/ReadyNASNVPlus.aspx}{NetGEAR ReadyNAS NV+} acts as a network filesystem for the \gls{PXI Crate} in addition to the crate's native filesystem on its local SATA hard drive.
+The \gls{RNAS} is a ready-made NAS solution.  NAS is an acronym for \textit{Network-Attached Storage}, a file-level (as opposed to block-level) remote storage system.  The \href{http://www.netgear.com/Products/Storage/ReadyNASNVPlus.aspx}{NetGEAR ReadyNAS NV+} acts as a network filesystem for the \gls{PXI Crate} in addition to the crate's native filesystem on its local SATA hard drive.  The \gls{RNAS} is backed up daily by Brian Wright.
 
 Much of your interaction with the crate will happen indirectly, via the \gls{RNAS}.  You'll usually want to edit VIs locally and then upload them to the \gls{RNAS} when its time to update the experiment's software.  VIs are usually programmed to log their data to the \gls{RNAS}, so you'll retreive the latest data from the \gls{RNAS} as well.
 

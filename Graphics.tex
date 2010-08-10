@@ -1,9 +1,12 @@
-\pgfmathparse{0.2ex*1em/1ex}
-\tikzset{pxislot/.style={line width=\pgfmathresult, baseline=0.34em/2}}
 
-\newcommand{\pxislotone}{\tikz[baseline=(n.base)]\draw[rotate=180] (0,0)--(60:1.4em)--(120:1.4em)--cycle node (n) at (0,.707em) {\tiny 1};}
-\newcommand{\pxislottwo}{\tikz[baseline=(n.base),scale=.75]\draw[rotate=45] (0,0) circle (.6em) (-.6em,-.6em) rectangle (.6em,.6em) node (n) at (0,0) {\tiny 2};}
-\newcommand{\pxislotn}[1]{\tikz[baseline=(n.base)]\draw (0,0) circle (.6em) node (n) {\tiny #1};}
+
+\newcommand{\pxislotone}{\tikz[baseline=(n.base),text height=1.25ex,text depth=0.25ex,font=\small]\draw[rotate=180] (-.7em,-.3em)--++(-60:1.4em)--++(60:1.4em)--cycle node[anchor=south] (n) at (0,0) {1};}
+\newcommand{\pxislottwo}{\tikz[baseline=(n.base),scale=.75,font=\small]\draw[rotate=45] (0,0) circle (.6em) (-.6em,-.6em) rectangle (.6em,.6em) node (n) at (0,0) {2};}
+\newcommand{\pxislotn}[1]{\tikz[baseline=(n.base),font=\small]\draw (0,0) circle (.6em) node[anchor=center] (n) at (0,0) {#1};}
+
+
+% \pgfmathparse{0.2ex*1em/1ex}
+% \tikzset{pxislot/.style={line width=\pgfmathresult, baseline=0.34em/2}}
 
 % \newcommand{\pxislotone}{\noindent
 %   \beginpgfgraphicnamed{Graphics-pxislot1}
@@ -40,6 +43,7 @@
 % {
 %   \pxislotn{\x}
 % }
+
 
 
 %%% Local Variables: 

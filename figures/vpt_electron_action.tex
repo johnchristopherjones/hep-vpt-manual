@@ -1,0 +1,49 @@
+  \begin{tikzpicture}
+
+    \node (light) at (-26.5mm*2,0) {};
+
+    \node (cathode) at (-26.5mm,0) {};
+    \path (cathode) ++(down:27mm/2 + 2em) node (cathode label) {Cathode};
+    \path (cathode label) ++(down:1em) node (cathode voltage) {0\,V};
+
+    \node (anode) at (0,0) {};
+    \path (anode) ++(down:27mm/2 + 2em) node (anode label) {Anode};
+    \path (anode label) ++(down:1em) node (anode voltage) {$+$800\,V};
+
+    \node (dynode) at (26.5mm,0) {};
+    \path (dynode) ++(down:27mm/2 + 2em) node (dynode label) {Dynode};
+    \path (dynode label) ++(down:1em) node (dynode voltage) {$+$600\,V};
+
+    % Incoming Light
+    \path[->] (light) edge[very thick,decorate,decoration={snake,amplitude=.4mm,segment length=2mm,post length=1mm}] node[below,sloped] {$\gamma$} (cathode);
+  
+    % Cathode Mesh
+    \begin{scope}[xscale=.5]
+      \draw[clip] (cathode) circle (26.5mm/2);
+      \draw[step=1mm,help lines,xshift=-26.5mm*2,brown] (-27mm/2,-27mm/2) grid (27mm/2,27mm/2);
+    \end{scope}
+
+    % Anode Mesh
+    \begin{scope}[xscale=.5]
+      \draw[clip] (anode) circle (26.5mm/2);
+      \draw[step=1mm,help lines] (-27mm/2,-27mm/2) grid (27mm/2,27mm/2);
+    \end{scope}
+
+    % Dynode Plate
+    \begin{scope}[xscale=.5]
+      \draw[thin] (dynode) circle (26.5mm/2);
+    \end{scope}
+
+    \path[->] (cathode) edge[thin] node[below] {\small e$^-$} (anode);
+    \path[->] (cathode) edge[thin] node[below] {\small e$^-$} (anode);
+
+    \begin{scope}[every loop/.style={min distance=20mm}]
+      % \path[->,thick] (anode) edge [out=-10,in=45,loop] node[right] {\small e$^-$} ();
+      \path[->,thick,blue] (anode) edge [out=10,in=-45,loop] node[right] {\small e$^-$} ();
+      \path[->,thick,orange] (anode) edge [distance=15mm,out=190,in=-225,loop] node[above] {\small e$^-$} ();
+      \path[->,thick,red] (anode) edge [] node[above] {\small e$^-$} (dynode);
+      \path[->,thick,red] (dynode) edge [out=120,in=10] node[above] {\small e$^-$} (anode);
+      \path[->,thick,red] (dynode) edge [out=135,in=25] node[above] {\small } (anode);
+    \end{scope}
+    
+  \end{tikzpicture}

@@ -37,7 +37,10 @@
 \usetikzlibrary{shapes.misc}
 \usetikzlibrary{snakes}
 \usetikzlibrary{scopes}
-\usepackage{xcolor}
+\usetikzlibrary{calc}
+\usetikzlibrary{positioning}
+\usetikzlibrary{shapes.multipart}
+\usepackage[]{xcolor}
 \usepackage[pagebackref, bookmarks, colorlinks, breaklinks,
 plainpages=false, pdfpagelabels, linktocpage,
 linkcolor = red, citecolor = blue, filecolor = blue, urlcolor = blue
@@ -178,7 +181,7 @@ linkcolor = red, citecolor = blue, filecolor = blue, urlcolor = blue
 %\includeonly{eq_magnet,op_magnet}
 %\includeonly{op_maintenance}
 
-
+%\includeonly{eq_vpt}
 \begin{document}
 \ifthenelse{\boolean{draft}}
 {
@@ -190,17 +193,16 @@ linkcolor = red, citecolor = blue, filecolor = blue, urlcolor = blue
 \include{Frontmatter}
 
 \mainmatter
-\include{intro_intro} 
-\include{intro_convention}
+\include{preamble}
 
 \include{eq_intro} 
-\include{previous_results}
-\include{further_reading}
+% \include{previous_results}
+% \include{further_reading}
 
 \include{eq_magnet}
 \include{eq_rig}
-\include{eq_preamp}
-\include{eq_led}
+% \include{eq_preamp}
+% \include{eq_led}
 \include{eq_vpt}
 
 \include{eq_high_voltage}
@@ -211,30 +213,44 @@ linkcolor = red, citecolor = blue, filecolor = blue, urlcolor = blue
 % eq_labview
 % eq_readynas
 
-\include{eq_building} 
+% \include{eq_building}
 
 \include{op_intro} 
 \include{op_software_intro} 
 \include{op_software_setup}
-\include{op_readynas}
+% \include{op_readynas}
 \include{op_pxi}
-\include{op_labview}
+% \include{op_labview}
 
 \include{op_hardware_intro} 
-\include{op_magnet}
+% \include{op_magnet}
 \include{op_low_voltage}
 \include{op_high_voltage}
 \include{op_vpt}
 
 \include{op_maintenance} 
 
-\include{op_experiments} 
+% \include{op_experiments} 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%% Appendicies %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\glossarystyle{long3col}
+\newglossarystyle{mylist}{%
+  \renewenvironment{theglossary}{\begin{description}}{\end{description}}
+  \renewcommand*{\glossaryheader}{}
+  \renewcommand*{\glsgroupheading}[1]{}
+  \renewcommand*{\glsgroupskip}{}
+  % Set how each entry should appear:
+  \renewcommand*{\glossaryentryfield}[5]{
+    \item[\textbf{\glstarget{##1}{##2}:}]% the entry name
+      % \space (##4)% the symbol in brackets
+      \space ##3% the description
+      \space «\,##5\,»% the number list in angle brackets
+    }
+}
+\glossarystyle{mylist}
 \printglossaries
 
 

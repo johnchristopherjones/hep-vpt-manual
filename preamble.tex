@@ -1,0 +1,119 @@
+\chapter{Preamble}
+
+\section{How This Document Was Written}
+\label{sec:preamble:how}
+\newcommand*{\TikZ}{Ti\textcolor{orange}{\emph{k}}Z}
+This document was written in \LaTeX, and was compiled with \XeTeX~0.94 from Mac\TeX\ 2009 for Unicode support.  The Lucida Grande font is used for sans-serif typefaces, available on Mac~OS~X.
+%The free/libre DejaVu Sans Mono was used for the monospaced font.
+Anonymous Pro is used for the monospaced font, also available on Mac~OS~X.
+
+A number of \LaTeX{} packages were used.
+The document was typeset with the \textit{Memoir} class.
+Graphics are provided with the {\TikZ} package.
+The glossary was constructed with the \texttt{glossaries} package.
+Tables make use of the \texttt{booktabs} and \texttt{multirow} packages.
+Links are provided by the \texttt{hyperref} package.
+Several other packages are loaded for symbol support: \texttt{amsmath},
+    \texttt{textcomp}, \texttt{ucs}, \texttt{xunicode}, \texttt{xltxtra}.
+
+
+\section{Conventions Used in This Text}
+\label{sec:preamble:conventions}
+
+\subsection{Font Conventions}
+\label{sec:preamble:fonts}
+
+The following conventions are used in this text:
+
+\begin{table}[h]\centering\begin{tabular}{>{}r p{0.66\textwidth}}
+    \scshape Example & \scshape Description \\
+    \midrule
+    \menu{File \menusep Open}                   & For menu items, a sans-serif font is
+                                                  used with \menusep between the menu items.\\
+  \keys{keys}                                   & For short key sequences that sould be
+                                                  pressed, a sans-serif font is used.\\
+  \path{/foo/bar}                               & For directories, filenames, and paths, a
+                                                  mono-spaced font is used.\\
+  \command{command -o file.ext}                 & For commands that should be entered
+                                                  literally into a terminal, a bold
+                                                  mono-spaced font is used.\\
+  \command{--file \namedfield{named field}}     & For options the user should supply,
+    a brief description of the option is surrounded in angle brackets.\\
+  \noun{LabVIEW}                                & For software, application names, and
+                                                  operating systems, a sans-serif font is
+                                                  used. \\
+  \make{CAEN}                                   & The maker of a component is typeset this way.\\
+  \makemodel{CAEN}{SY1527LC}                    & The make (manufacturer) and model number
+                                                  of a component are typeset this way.\\
+  \model{SY1527}                                & The model number of a component is typeset
+                                                  this way.\\
+\end{tabular}\end{table}
+
+
+
+\subsection{Advisories}
+\label{sec:preamble:advisories}
+
+\begin{avoid} hazards pointed out by the warning signs. \end{avoid}
+\begin{pleasedo} read positive recommendations in boxes like this. \end{pleasedo}
+\begin{pleasedonot} ignore negative recommendations without consulting with the experiment maintainer. \end{pleasedonot}
+
+\newpage
+\subsection{Symbols Used}
+\label{sec:preamble:symbols}
+
+For brevity and consistency, a number of standard symbols are used to represent keyboard keys.  These conventions were largely adopted from \noun{Mac~OS~X}.
+
+\begin{table}[htbp]\begin{center}
+    \caption{Keyboard Symbols}
+    \label{tab:intro:keyboard_symbols}
+
+    \begin{tabular}{@{} c l l @{}}
+      %\toprule %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+      \scshape Symbol & \scshape Name   & \scshape Also Known As \\
+      \midrule %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+      \shiftkey       & Shift           & \dashem\\
+      \controlkey     & Control         & \dashem\\
+      \optionkey      & Option          & \textit{Alt}\\
+      \commandkey     & Command         & \textit{Windows Key}\\
+      \deleterightkey & Delete Right    & \dashem\\
+      \deleteleftkey  & Delete Left     & \dashem\\
+      \escapekey      & Escape          & \dashem\\
+      \returnkey      & Return          & \textit{Enter}\\
+      \leftkey        & Left            & \dashem\\
+      \upkey          & Up              & \dashem\\
+      \rightkey       & Right           & \dashem\\
+      \downkey        & Down            & \dashem\\
+      \tabkey         & Tab             & \dashem\\
+      %\bottomrule %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{tabular}
+\end{center}\end{table}
+
+
+Four of these keys are \textit{modifiers}: \commandkey , \shiftkey , \controlkey , \optionkey .  These keys do nothing on their own (except for \commandkey, which toggles the \textsf{Start Menu} in Windows), and have to be combined with another character.  This is denoted by joining two keys, such as \keys{\commandkey C} (Copy, \textsf{OS~X}) or  \keys{\controlkey C} (Copy, \noun{Windows}).
+
+%Should it be necessary to describe a \textit{key chord}, which is a sequence of keys which are pressed and released, the individual strokes will be separated by spaces.  For instance, the \textsf{Save~As} command in \textsf{Emacs} can be called by holding \textit{control} while pressing and releasing \texttt{\textbf{x}}, pressing and releasing \texttt{\textbf{s}}, then releasing \textit{control}.  Or, in other words: \keys{\controlkey x \controlkey s}
+
+
+\section{Links}
+\label{sec:preamble:links}
+
+If this document is viewed as a PDF, you'll be able to follow hyperlinks throughout the document.  These links have different styles depending on their destination:
+
+\begin{table}[h]\centering
+  \begin{tabular}{>{}r p{0.75\textwidth}}
+    \scshape Example & \scshape Description \\
+    \midrule
+    \href{http://wwww.google.com}{Google} & External link to URI (hyperlink)\\
+    \href{./Manual.pdf}{Manual.pdf} & External link to local companion files\\
+    \secnameref{sec:preamble:links} & Internal link within the same document\\
+    \gls{LabVIEW} & Internal link to glossary definition\\
+\end{tabular}\end{table}
+
+
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "Manual"
+%%% End: 

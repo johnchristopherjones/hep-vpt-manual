@@ -9,13 +9,15 @@
   \label{fig:eq_labview:hostmainvi}
 \end{figure}
 
-LabVIEW is a graphical programming environment used for developing programs called virtual instruments, or \glspl{VI}, which imitate physical instruments.  LabVIEW uses a visual programming language called ``G'' for building virtual instruments.  ``G'' is a data-flow driven language, as opposed to a procedural like C or functional language like LISP or Haskell.  \FIXME (rephrase) In LabVIEW program execution is determined by the availability of data to the components inside a VI.  As such, LabVIEW's programs are inherently parallel, meaning that different parts of the program can run simultaneously.
+LabVIEW is a graphical programming environment used for developing programs called virtual instruments, or \glspl{VI}, which imitate physical instruments.  LabVIEW uses a visual programming language called ``G'' for building virtual instruments.  ``G'' is a data-flow driven language, as opposed to a procedural like C or functional language like LISP or Haskell.
+
+Program execution in procedural languages is determined by the order of statements.  In LabVIEW, program execution is determined by the connections of outputs to inputs.  Components (VIs) execute as soon as they have all of their inputs, and send output as soon as they're done executing.  Connections can be split to send outputs to multiple components.  As such, LabVIEW's programs are inherently capable of parallel execution, meaning that different parts of the program can (theoretically) run simultaneously.  In practice, parallel execution is simulated on a serial execution processor by a scheduler, just like in a modern multitasking operating system.  VIs which target the FPGA are capable of true parallel execution, which makes it ideal timing-sensitive for trigger logic.
 
 To get started with LabVIEW right away, read the manual \href{Manuals/LV_Getting_Started}{Getting Started with LabVIEW}.  This manual is also available from within the LabVIEW~2009 ``Getting Started'' dialog when the application is launched, in the right-hand pane under ``Help.''
 
 For historical background on LabVIEW, see the \href{http://en.wikipedia.org/wiki/LabVIEW}{Wikipedia entry}.
 
-The remainder of this section is a conceptual crash-course in LabVIEW.  For hands-on practice, \ldots \FIXME
+The remainder of this section is a conceptual crash-course in LabVIEW.  For hands-on practice, try the tutorials and examples built into LabVIEW.
 
 \subsection{Block Diagram and Front Panel}
 \label{sec:eq_labview:block_diagram}
@@ -72,7 +74,7 @@ Usually the best way to find out how to do something new is to find an example. 
 
 The \href{http://forums.ni.com/ni/}{official National Instruments forums} are also a useful source of information.
 
-In addition, the UVa Site License includes a support contract.  For help \ldots \FIXME.
+In addition, the UVa Site License includes a support contract.
 
 
 %%% Local Variables: 

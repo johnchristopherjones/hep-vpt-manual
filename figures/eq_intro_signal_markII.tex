@@ -1,0 +1,95 @@
+\begin{tikzpicture}
+  [  node distance=15mm,
+     text height=1.2ex,
+     text depth=.25ex,
+  nonterminal/.style={
+    rectangle, minimum size=6mm,
+    very thick, draw=red!50!black!50,
+    top color=white,
+    bottom color=red!50!black!20,
+    font=\itshape
+  }, terminal/.style={
+    rectangle, minimum size=6mm, rounded corners=3mm,
+    very thick, draw=black!50,
+    top color=white, bottom color=black!10,
+    font=\ttfamily
+  }, skip loop/.style={to path={-- ++(0,#1) -| (\tikztotarget)}}
+  ]
+
+  \node (fpga) [nonterminal] {{\normalfont\pxislottwo}\ FPGA};
+  \node (led)  [terminal,right=of fpga] {LED Board};
+  \node (vpt)  [terminal,right=of led,
+                rectangle split, rectangle split parts=2, draw] {
+                  VPT
+                  \nodepart{second}
+                  PIN
+                };
+  \node (amp)  [terminal,right=of vpt] {Amp};
+  \node (hs)   [nonterminal,above=of amp] {{\normalfont\pxislotn{7}} Switch\ };
+  \node (ls)   [nonterminal,below=of amp] {{\normalfont\pxislotn{3}} Switch\ };
+  \node (sys)  [nonterminal,right=of amp] {{\normalfont\pxislotone} System Controller\ };
+  \node (osc)  [nonterminal,above=of sys] {{\normalfont\pxislotn{6}} Oscilloscope\ };
+  \node (dmm)  [nonterminal,below=of sys]  {{\normalfont\pxislotn{5}} DMM\ };
+
+  \node (humiter) [terminal,left=of ls] {Humiter};
+
+  \path[font=\small]
+
+        (fpga.east)        edge[->]                node [above] {\itshape load} (led.west)
+        ($(fpga.north east)!.25!(fpga.south east)$)
+                          edge[->,out=60,in=120]   node[sloped,above]{\itshape reference}
+                                                   ($(led.south west)!.75!(led.north west)$)
+        ($(fpga.north east)!.75!(fpga.south east)$)
+                          edge[->,out=-60,in=240]  node[sloped,above]{\itshape soak}
+                                                   ($(led.south west)!.25!(led.north west)$)
+
+        (led.east)        edge[->,very thick]      node [above] {\itshape load} (vpt.west)
+        ($(led.north east)!.25!(led.south east)$)
+                          edge[->,very thick,out=60,in=120]
+                                                   node[sloped,above]{\itshape reference}
+                                                   ($(vpt.south west)!.66!(vpt.north west)$)
+        ($(led.north east)!.75!(led.south east)$)
+                          edge[->,very thick,out=-60,in=240]  
+                                                   node[sloped,above]{\itshape soak}
+                                                   ($(vpt.south west)!.33!(vpt.north west)$)
+
+        % (led.north)       edge[->,skip loop=5mm]   node [below] {\itshape soak}
+        %                                            ($(vpt.north west)!.25!(vpt.north east)$)
+        % (led.south)       edge[->,skip loop=-5mm]  node [below] {\itshape reference}
+        %                                            ($(vpt.south west)!.25!(vpt.south east)$)
+        ($(vpt.north west)!.75!(vpt.north east)$)
+                          edge[->,skip loop=15mm,out=90,in=180,very thick]
+                                                   node[sloped,above]{\itshape{}PIN}
+                                                   (hs.west)
+        (vpt.east)        edge[->,very thick]      node[sloped,above]{\itshape{}anode} (amp.west)
+        (amp.north)       edge[->,very thick]      node[sloped,above]{\itshape{}anode} (hs.south)
+        ($(vpt.south west)!.75!(vpt.south east)$)
+                          edge[->,skip loop=15mm,out=-90,in=180,very thick]
+                                                   node[sloped,below,pos=.35]{\itshape{}cathode}
+                                                   ($(ls.north west)!.33!(ls.south west)$)
+        ($(humiter.north east)!.66!(humiter.south east)$)
+                         edge[->]
+                                                   ($(ls.north west)!.66!(ls.south west)$)
+        (ls.east)        edge[->]                  (dmm.west)
+        (hs.east)        edge[->]                  (osc.west)
+        (dmm.north)      edge[->]                  (sys.south)
+        (osc.south)      edge[->]                  (sys.north);
+
+  % LEGEND
+  % \draw[help lines] (current bounding box.north west) rectangle (2em, 10em);
+  \begin{scope}[node distance=3mm,font=\small]
+    \node (space) [above=of fpga] {};
+    \node (legend single)   [above=of space] {};
+    \node (legend single 2) [right=of legend single,anchor=west] {\tiny Single Cable};
+    \node (legend double)   [above=of legend single] {};
+    \node (legend double 2) [right=of legend double,anchor=west] {\tiny Multiple Cables};
+    \path
+      (legend single)    edge[->]            (legend single 2)
+      (legend double)    edge[->,very thick] (legend double 2);
+  \end{scope}
+\end{tikzpicture}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "../Manual"
+%%% End: 

@@ -18,7 +18,7 @@ What we refer to as the ``PXI Crate'' or just ``the crate'' is a \gls{NI} \textt
   \label{fig:eq_pxi:chasis_front}
 \end{figure}
 
-The chasis backplane supplies several busses to each slot.  First, all modules share the 64-bit CompactPCI-compatible PXI bus.  Second, a \textit{Star Trigger Bus} originates from Slot \pxislottwo, and connects to the other six peripheral slots.  Third, a \textit{Local Bus} connects all seven peripheral slots in a daisy chain; the left-local bus signals on Slot \pxislottwo are used for \textit{Star Trigger}, and the right-local bus signals on Slot \pxislotn{8} are not routed.  The \textit{Local Bus} is 13-lines wide and can pass anything from high-speed TTL to analog signals up to 42\,V.  Fourth, the \textit{Trigger Bus} provides eight shared trigger lines to all eight slots.  Finally, the chasis supplies a 10~MHz system reference clock signal (PXI\_CLK10) independently to each peripheral slot.  The clock signal is also accessible externally via rear-mounted BNC connectors.
+The chasis backplane supplies several busses to each slot.  First, all modules share the 64-bit CompactPCI-compatible PXI bus.  Second, a \textit{Star Trigger Bus} originates from Slot \pxislottwo, and connects to the other six peripheral slots.  Third, a \textit{Local Bus} connects all seven peripheral slots in a daisy chain; the left-local bus signals on Slot \pxislottwo{} are used for \textit{Star Trigger}, and the right-local bus signals on Slot \pxislotn{8} are not routed.  The \textit{Local Bus} is 13-lines wide and can pass anything from high-speed TTL to analog signals up to 42\,V.  Fourth, the \textit{Trigger Bus} provides eight shared trigger lines to all eight slots.  Finally, the chasis supplies a 10~MHz system reference clock signal (PXI\_CLK10) independently to each peripheral slot.  The clock signal is also accessible externally via rear-mounted BNC connectors.
 
 \begin{figure}[htbp]\begin{center}
   {\tiny
@@ -34,28 +34,6 @@ The chasis backplane supplies several busses to each slot.  First, all modules s
 
 The chasis at HEP is configured with the following modules, described in the following sections:
 
-% %% Extraneous table; kept for example purposes (eg, column style) %%%%%%%%%%
-% \begin{table}[htbp]\begin{center}
-%     \caption{PXI Modules}
-%     \label{tab:eq_pxi:modules}
-%
-%     \begin{tabular}{@{} c >{\ttfamily}l l l @{}}
-%       \toprule %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%       Slot & \normalfont Model \# & Description & Configuration Options \\
-%       \midrule %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%       \pxislotone  & PXI-8104 & Embedded Controller & Maximum Memory \FIXME \\
-%       \pxislottwo  & PXI-7851R & FPGA & \FIXME\\
-%       \pxislotn{3} & \FIXME & Switch & Mounted with NITB-2605 patch panel \\
-%       \pxislotn{4} & PXI-4071 & DC Power Supply & \FIXME \\
-%       \pxislotn{5} & PXI-4110 & Flex DMM & \FIXME \\
-%       \pxislotn{6} & PXI-5154 & Digitizer & \FIXME \\
-%       \pxislotn{7} & PXI-2593 & Multiplexer & \FIXME \\
-%       \bottomrule %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% \end{tabular}
-% \end{center}\end{table}
-
-
-\newcommand*{\pxilabelled}[1]{\hspace\labelsep \normalfont\bfseries #1}
 \begin{labelled}{pxilabelled}
 
   \item[\pxislotone{} \texttt{PXI-8104}\hspace{.25em} Embedded Computer]
@@ -64,9 +42,8 @@ The chasis at HEP is configured with the following modules, described in the fol
   \item[\pxislottwo{} \texttt{PXI-7851R}\hspace{.25em} \gls{FPGA}]
     Essentially a reprogrammable integrated circuit, the FPGA controls all the real-time trigger signals.  The module itself has a break-out box connector, and the break-out box houses the connections to devices which receive external trigger signals.  (Namely, the LED pulser boards.)  The break-out box is an \makemodel{NI}{SCB-68}.
 
-  \item[\pxislotn{3} \texttt{\FIXME}\hspace{.25em} 24-Channel two-wire Multiplexer]
-    Referred to as ``the switch.''  Featuring a single large external port, the switch connects any of the 24 two-wire channels to the internal busses.  The switching mechanism is software controlled.  An \texttt{NI TB-2605} multiplexing terminal block is currently mounted directly on it.\\\noindent
-    \FIXME This is either an \texttt{PXI-2501} or \texttt{PXI-2503} multiplexer.
+  \item[\pxislotn{3} \texttt{PXI-2501}\hspace{.25em} 24-Channel two-wire Multiplexer]
+    Referred to as ``the switch.''  Featuring a single large external port, the switch connects any of the 24 two-wire channels to the internal busses.  The switching mechanism is software controlled.  An \texttt{NI TB-2605} multiplexing terminal block is currently mounted directly on it.  This switch receives the cathode current and humiter signals and routes them to the DMM.
 
   \item[\pxislotn{4} \texttt{PXI-4110}\hspace{.25em} DC Power Supply]
     A software-controlled DC power supply, not currently in use.
@@ -78,9 +55,8 @@ The chasis at HEP is configured with the following modules, described in the fol
     A high frequency (2~GS/s) oscilloscope, optimized for automated testing.
 
   \item[\pxislotn{7} \texttt{PXI-2593}\hspace{.25em} 16-Channel Multiplexer]
-    A 16-channel high frequency switching multiplexer, able to handle frequencies from DC to 500 MHz.\\\noindent
-    \FIXME All signals requiring measurement are routed from this multiplexer to either the DMM or the Oscilloscope.\\\noindent
-    \FIXME Wouldn't it make more sense for this multiplexer to be adjacent to the 24-channel multiplexer so that they could communicate directly over the local bus?
+    A 16-channel high frequency switching multiplexer, able to handle frequencies from DC to 500 MHz.  This switch receives the anode and PIN diode signals and routes them to the oscilloscope.
+    All signals requiring measurement are routed from this multiplexer to either the DMM or the Oscilloscope.
 
 \end{labelled}
 

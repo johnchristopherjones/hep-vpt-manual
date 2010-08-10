@@ -1,4 +1,4 @@
-\begin{tikzpicture}
+\begin{tikzpicture}[scale=0.75]
   \begin{scope}[xshift=10cm]
     %%%% North Endcap %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \begin{scope}[yscale=-1,fill=white]
@@ -69,9 +69,9 @@
     -- ++(up:.2) -- ++(left:9)
     -- ++(up:.2) -- ++(right:9);
 
-  \node[fill=white] at (10-4.5-1.2,-2.6)  {\tiny Load};
-  \node[fill=white] at (10-4.5,-2.8)  {\tiny Soak};
-  \node[fill=white] at (10-4.5+1.5,-3)  {\tiny Reference};
+  \node[] at (10-4.5-1.5 ,-2.5)  {\tiny\scshape load};
+  \node[] at (10-4.5     ,-2.7)  {\tiny\scshape soak};
+  \node[] at (10-4.5+1.5 ,-2.9)  {\tiny\scshape reference};
 
   \draw[very thick]
        (Switch)
@@ -83,11 +83,12 @@
     -- ++(down:.2) -- ++(left:9)
     -- ++(down:.2) -- ++(right:9)
     -- ++(down:.2) -- ++(left:9)
-    -- ++(down:.2) -- ++(right:9);
+    ;%-- ++(down:.2) -- ++(right:9);
  
-  \node[fill=white] at (10-4.5-1.2,2.6) {\tiny Anode};
-  \node[fill=white] at (10-4.5,2.8) {\tiny Cathode};
-  \node[fill=white] at (10-4.5+1.5,3.02) {\tiny Dynode};
-  \node[fill=white] at (10-4.5+1.5,2.4) {\tiny PIN Diode};
-  \node[fill=white] at (10-4.5,2.15) {\tiny Amplifier};
+
+  \node[] at (10-4.5-1.5 ,3.1) {\tiny\scshape anode};
+  \node[] at (10-4.5     ,2.9) {\tiny\scshape cathode};
+  \node[] at (10-4.5+1.5 ,2.7) {\tiny\scshape pin diode};
+  \node[] at (10-4.5-1.5 ,2.5) {\tiny\scshape humiter};
+  \node[] at (10-4.5-1.5 ,2.3) {\tiny\scshape };
 \end{tikzpicture}
